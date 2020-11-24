@@ -1,4 +1,7 @@
 class Project < ApplicationRecord
+  has_one_attached :photo
+  has_many :questions
+
   validates :description, presence: true
   validates :title, presence: true
   validates :longitude, presence: true
