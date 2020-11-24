@@ -1,5 +1,9 @@
-.background-login {
-  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://res.cloudinary.com/dykscnyvu/image/upload/v1606226385/image_de_fond_mcv_wacmfb.jpg');
+.background {
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('background.jpg');
+  width: 100vw;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .login-box {
@@ -11,10 +15,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-}
-
-.background {
   text-align: -webkit-center;
+  opacity: 0.8;
 }
 
 .form-inputs {
