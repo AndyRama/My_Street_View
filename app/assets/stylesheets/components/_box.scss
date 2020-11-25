@@ -1,0 +1,11 @@
+.box {
+  width: auto;
+  background-color: white;
+  border-radius: 5px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: -webkit-center;
+  opacity: 0.8;
+}
