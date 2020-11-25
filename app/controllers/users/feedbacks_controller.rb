@@ -1,4 +1,4 @@
-class FeedbacksController < ApplicationController
+class Users::FeedbacksController < ApplicationController
   def new
     @feedback = Feedback.new(question_id: params[:id])
     @question = Question.find(params[:question_id])
@@ -10,7 +10,7 @@ class FeedbacksController < ApplicationController
     @feedback.user = current_user
     @feedback.question = @question
     if @feedback.save!
-      redirect_to project_path(@question.project)
+      redirect_to users_project_path(@question.project)
     else
       render :new
     end

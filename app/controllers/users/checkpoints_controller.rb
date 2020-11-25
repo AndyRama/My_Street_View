@@ -1,2 +1,0 @@
-class CheckpointsController < ApplicationController
-end
