@@ -5,7 +5,15 @@ class FeedbacksController < ApplicationController
   end
 
   def create
+    @question = Question.find(params[:question_id])
     @feedback = Feedback.new(feedbacks_params)
+    @feedback.user = current_user
+    @feedback.question = @question
+    if @feedback.save!
+      redirect_to project_path(@question.project)
+    else
+      render :new
+    end
   end
 
   private
