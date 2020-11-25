@@ -9,7 +9,7 @@ class Users::FeedbacksController < ApplicationController
     @feedback = Feedback.new(feedbacks_params)
     @feedback.user = current_user
     @feedback.question = @question
-    if @feedback.save!
+    if @feedback.save
       redirect_to users_project_path(@question.project)
     else
       render :new
