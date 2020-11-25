@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   resources :projects do
-    resources :questions, only: [:create]
-    resources :feedbacks, only: [:create]
+    resources :questions, only: %i[create new]
   end
-  resources :questions, only: %i[show edit update destroy]
+
+  resources :questions, only: %i[show edit update destroy] do
+    resources :feedbacks, only: %i[create new]
+  end
 
   namespace :users do
     resources :projects, only: %i[show index]
