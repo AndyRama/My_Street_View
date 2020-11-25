@@ -4,6 +4,8 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @project = Project.find(params[:id])
+    @questions = @project.questions
   end
 
   def new
@@ -19,5 +21,11 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+
+  def project_params
+    params.require(:project).permit(:title, :description, :photo)
   end
 end

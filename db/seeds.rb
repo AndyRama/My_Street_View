@@ -10,7 +10,7 @@ marie = User.new(email:"marie@gmail.com", password: "iamcitizen1")
 
 sophie = User.new(email:"shopie@gmail.com", password: "iamcitizen2")
 
-patrick = User.new(email:"patrick@gmail.com", password: "iammayor1")
+patrick = User.new(email:"patrick@gmail.com", password: "iammayor1", admin: true)
 
 marie.save
 sophie.save
@@ -22,7 +22,7 @@ puts "Creating 4 new projects"
 voirie1 = Project.new(
   title: "Project ecologique?",
   description: "Amenagement d'un espace vert sur la place dans le cadre d'un project ecologie",
-  longitude: 44.85959815077221, 
+  longitude: 44.85959815077221,
   latitude:  -0.5659754120653856,
   progress: 2
 )
@@ -35,8 +35,8 @@ voirie2 = Project.new(
   latitude: -0.5703369634805979,
   progress: 4
 )
-  
-  
+
+
 #brasserie du Medoc
 voirie3 = Project.new(
   title: "Piste cyclable ?",
@@ -46,7 +46,7 @@ voirie3 = Project.new(
   progress: 3
 )
 
-  
+
 #union sportive
 voirie4 = Project.new(
   title: "Espace vert au chatron ?",
@@ -57,8 +57,8 @@ voirie4 = Project.new(
 )
 voirie1.photo.attach(io: open("https://res.cloudinary.com/dbtnehfrf/image/upload/v1606217206/my%20city%20views/luca-herrmann-c3hVKjmw2aU-unsplash_ojroku.jpg"), filename:'voirie1')
 voirie1.save!
-voirie2.photo.attach(io: open("https://res.cloudinary.com/dbtnehfrf/image/upload/v1606217209/my%20city%20views/paul-gilmore-jBCSAAcANG8-unsplash_1_ikuiwm.jpg"), filename:'voirie2') 
-voirie2.save! 
+voirie2.photo.attach(io: open("https://res.cloudinary.com/dbtnehfrf/image/upload/v1606217209/my%20city%20views/paul-gilmore-jBCSAAcANG8-unsplash_1_ikuiwm.jpg"), filename:'voirie2')
+voirie2.save!
 voirie3.photo.attach(io: open("https://res.cloudinary.com/dbtnehfrf/image/upload/v1606217205/my%20city%20views/bruno-martins-GkZvxVsHYWw-unsplash_atn7ga.jpg"), filename:'voirie3')
 voirie3.save!
 voirie4.photo.attach(io: open("https://res.cloudinary.com/dbtnehfrf/image/upload/v1606217203/my%20city%20views/borna-hrzajna-8IPrifbjo-0-unsplash_1_cxd7iz.jpg"), filename:'voirie4')
