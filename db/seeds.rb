@@ -67,30 +67,30 @@ voirie4.save!
 puts "Creating questions with answers first and second "
 
 question1 = Question.new(
-  title: "Project ecologique ?",
-  first_answer: "Je suis d'accord pour cette amenagement",
-  second_answer: "reponse 2",
+  title: "Selon vous, de quel coté la piste cyclable doit etre ?",
+  first_answer: "Coté Sud",
+  second_answer: "Coté Nord",
   project: Project.first
 )
 
 question2 = Question.new(
-  title: "Refaire Chaussée ?",
-  first_answer: "reponse 1",
-  second_answer: "reponse 2",
+  title: "Préférez vous une chaussé en pavés ou en bitume ?",
+  first_answer: "Bitume",
+  second_answer: "Pavés",
   project_id: 2
 )
 
 question3 = Question.new(
-  title: "Piste cyclable ?",
-  first_answer: "reponse 1",
-  second_answer: "reponse 2",
+  title: "Garder les maronniers place Gambetta ?",
+  first_answer: "Oui",
+  second_answer: "Non",
   project_id: 3
 )
 
 question4 = Question.new(
-  title: "Espace vert au chatron ?",
-  first_answer: "reponse 1",
-  second_answer: "reponse 2",
+  title: "Espace vert au Chartrons ?",
+  first_answer: "Oui !",
+  second_answer: "Réponse D, la réponse D.",
   project: Project.last
 )
 question1.save
