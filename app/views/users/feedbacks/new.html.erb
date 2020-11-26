@@ -1,5 +1,5 @@
 <div class="background">
-  <div class="login-box shadow-lg p-3 mb-5 bg-white rounded">
+  <div class="box shadow-lg p-3 mb-5 bg-white rounded">
     <div class="container">
         <h3><%= @question.title %></h3>
         
@@ -11,7 +11,7 @@
         </div>
 
         <div class="form-actions">
-            <%= f.button :submit, "Submit", class: "btn btn-login m-3" %>
+            <%= f.button :submit, "Submit", class: "btn btn-blue m-3" %>
         </div>
           <%= link_to "Answer later", :back %>
       <% end %>
