@@ -12,10 +12,18 @@
 @import "components/index";
 @import "pages/index";
 
-// index for admin
-.container {
+// index user
+
+.user-container {
   display: grid;
+  justify-content: center;
+}
+
+// index for admin
+.index-container {
   grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .all-projects {
@@ -24,35 +32,50 @@
 
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
-  .container {
+  .index-container {
     grid-template-columns: 1fr;
+  }
+  .background {
+    background-repeat: repeat;
   }
 }
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
-  .container {
+  .index-container {
     grid-template-columns: 1fr;
+  }
+  .background {
+    background-repeat: repeat;
   }
 }
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
-  .container {
+  .index-container {
     grid-template-columns: 1fr 1fr;
+  }
+  .background {
+    background-repeat: repeat;
   }
 }
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
-  .container {
+  .index-container {
     grid-template-columns: 1fr 1fr 1fr;
+  }
+  .background {
+    background-repeat: repeat;
   }
 }
 
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
-  .container {
+  .index-container {
     grid-template-columns: 1fr 1fr 1fr;
+  }
+  .background {
+    background-repeat: repeat;
   }
 }
