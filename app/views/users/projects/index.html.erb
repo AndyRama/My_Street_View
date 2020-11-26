@@ -4,11 +4,7 @@
       <div class="card" style="width: 18rem; margin-bottom: 15px; margin-top: 10px;">
         <%= link_to users_project_path(project.id) do %>
           <div class="card-image-top">
-          <% if project&.photo&.key %>
             <%= cl_image_tag project.photo.key, class: "image-card", width: 286, height: 180 %>
-          <% else %>
-            <h2>ERROR</h2>
-          <% end %>
           </div>
         <% end %>
         <div class="card-body">
