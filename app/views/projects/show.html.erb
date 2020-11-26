@@ -4,21 +4,19 @@
       <%= cl_image_tag @project.photo.key, height: 180, width: 286 %>
       <h1 class="title"> <%= @project.title %> </h1>
     </div>
-  <!--   <div class="problematic">
-      <h3 class="problematic-title">Problématique</h3>
-      <p class="problematic-description"> <#%= @project.problematicbody %> </p>
-    </div> -->
     <div class="description">
       <h5>Description</h5>
       <p class="descriptionbody"> <%= @project.description %> </p>
     </div>
     <div class="footer">
-      <% @questions.each do |question| %>
-        <%= question.title %>
-        <%= link_to "Donnez votre avis", new_question_feedback_path(question), class: "btn btn-blue" %>
-      <% end %>
+      <%# @questions.each do |question| %>
+        <%#= @questions.title %>
+        <%#= link_to "Donnez votre avis", new_users_question_feedback_path(question), class: "btn btn-blue" %>
+      <%# end %>
+        <%= link_to "Modifier", edit_project_path(@project), class: "btn btn-blue" %>
+        <%= link_to "Supprimer", project_path(@project), method: :delete, class: "btn btn-blue", data: {confirm: "Are you sure?"} %> 
       <div class="back">
-        <%= link_to "Retour", projects_path %>
+        <%= link_to "Retour", users_projects_path %> 
       </div>
     </div>
   </div>
