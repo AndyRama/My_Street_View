@@ -28,12 +28,18 @@ else
   print('-')
 end
 
-patrick = User.new(email:"patrick@gmail.com", password: "iammayor1")
+patrick = User.new(email:"patrick@gmail.com", password: "iammayor1", admin: true)
 if patrick.save
   print('.')
 else
   patrick = User.where(email: "patrick@gmail.com").first
-  print('-')
+  if patrick.admin
+    print('-')
+  else
+    patrick.admin = true
+    patrick.save
+    print('.')
+  end
 end
 
 
@@ -43,7 +49,7 @@ puts "\n Création de 4 projets"
 projet1 = Project.new(
   title: "Project ecologique?",
   description: "Amenagement d'un espace vert sur la place dans le cadre d'un project ecologie",
-  longitude: 44.85959815077221, 
+  longitude: 44.85959815077221,
   latitude:  -0.5659754120653856,
   progress: 3
 )
