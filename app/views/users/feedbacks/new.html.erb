@@ -2,7 +2,7 @@
   <div class="box shadow-lg p-3 mb-5 bg-white rounded">
     <div class="container">
         <h3><%= @question.title %></h3>
-
+        
         <%= simple_form_for [:users, @question, @feedback] do |f| %>
          <%= f.error_notification %>
         <div class="form-inputs">
