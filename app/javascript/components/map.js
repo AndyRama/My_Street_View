@@ -4,15 +4,22 @@ import * as d3 from "d3";
 
 const token = 'pk.eyJ1IjoianVsaWFubGYiLCJhIjoiY2tndzl6aXhqMDAxazMwb3NoeTNtNjN2biJ9.rKcfejZ9GeY9RhR-li-d4w';
 const options = { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 };
+const color = ['#279AF1', '#03CEA4', '#E87310'];
+// [bleu , vert, orange]
 
 let map;
 
-const addPoint = (coord) => {
-  // const popup = new mapboxgl.Popup({ offset: 25 })
-  //   .setHTML('<h3>Project Description</h3><a href="' + project_path + project.id + '">more information</a>');
-  new mapboxgl.Marker()
+// Longitude = VERTICALE
+// Latitude = HORIZONTALE
+// position = [longitude, latitude]
+
+
+const addPoint = (coord, descr, progress) => {
+  const popup = new mapboxgl.Popup({ offset: 25 })
+    .setHTML(descr);
+  new mapboxgl.Marker({ color: color[progress] })
     .setLngLat(coord)
-    // .setPopup(popup)
+    .setPopup(popup)
     .addTo(map);
 };
 
@@ -29,8 +36,8 @@ const generateFakeMove = () => {
         'type': 'line',
         'source': 'trace',
         'paint': {
-          'line-color': '#669df6',
-          'line-opacity': 0.75,
+          'line-color': '#000000',
+          'line-opacity': 0.5,
           'line-width': 5
         }
       });
@@ -56,7 +63,6 @@ const generateFakeMove = () => {
 const transformPos = (pos) => {
   return new Promise(resolve => {
     const crd = pos.coords;
-
     resolve([crd.longitude, crd.latitude]);
   });
 };
@@ -72,7 +78,7 @@ const trackUser = (pos) => {
       const data = { type: "FeatureCollection", features: [{ type: "Feature", geometry: { type: "LineString", coordinates: [position] } }] }
       map.getSource('trace').setData(data);
       map.panTo(position);
-      saveCheckpoint(position);
+      // saveCheckpoint(position);
     }
   });
 
@@ -101,13 +107,25 @@ const generateMove = (center) => {
         navigator.geolocation.getCurrentPosition(trackUser, error, options);
         i += 1;
       } else {
-        console.log('FINI');
-        console.log(positions);
         window.clearInterval(timer);
       }
     }, 5000);
   });
 };
+
+const drawProject = () => {
+  const projects = document.querySelectorAll('#all-projects > .card');
+  projects.forEach((project) => {
+    const lon = parseFloat(project.dataset.lon);
+    const lat = parseFloat(project.dataset.lat);
+    const progress = parseFloat(project.dataset.progress);
+    const position = [lon, lat];
+    const descr = project.innerHTML;
+    addPoint(position, descr, (progress - 1));
+  });
+};
+
+
 
 const initMap = (center) => {
   mapboxgl.accessToken = token;
@@ -117,6 +135,7 @@ const initMap = (center) => {
     center: center, // starting position
     zoom: 12
   });
+  drawProject();
   generateFakeMove();
   // generateMove(center);
 };

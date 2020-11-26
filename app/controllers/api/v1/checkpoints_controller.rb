@@ -3,7 +3,7 @@ class Api::V1::CheckpointsController < Api::V1::BaseController
   acts_as_token_authentication_handler_for User, except: [:show]
 
   def index
-    @checkpoints = Checkpoint.where(user: current_user).map { |point| [point.latitude, point.longitude] }
+    @checkpoints = Checkpoint.where(user: current_user).map { |point| [point.longitude, point.latitude] }
   end
 
   def show

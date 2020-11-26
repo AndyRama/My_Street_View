@@ -49,8 +49,8 @@ puts "\n Création de 4 projets"
 projet1 = Project.new(
   title: "Project ecologique?",
   description: "Amenagement d'un espace vert sur la place dans le cadre d'un project ecologie",
-  longitude: 44.85959815077221,
-  latitude:  -0.5659754120653856,
+  longitude:  -0.5659754120653856,
+  latitude: 44.85959815077221,
   progress: 3
 )
 if projet1.save
@@ -65,8 +65,8 @@ end
 projet2 = Project.new(
   title: "Refaire Chaussée ?",
   description: "Suite à la constatation de nombreux troues present sur la chaussée",
-  longitude: 44.861582981544565,
-  latitude: -0.5703369634805979,
+  longitude: -0.5703369634805979,
+  latitude: 44.861582981544565,
   progress: 1
 )
 if projet2.save
@@ -81,8 +81,8 @@ end
 projet3 = Project.new(
   title: "Piste cyclable ?",
   description: "Solicitation suite a de multiple demandes amenagement d'une piste cyclable",
-  longitude: 44.85846256846444,
-  latitude: -0.5669074204334726,
+  longitude: -0.5669074204334726,
+  latitude: 44.85846256846444,
   progress: 1
 )
 if projet3.save
@@ -97,8 +97,8 @@ end
 projet4 = Project.new(
   title: "Espace vert au chatron ?",
   description: "Amenagement d'un espace vert dans le cadre d'un project ecologie",
-  longitude: 44.858523409633406,
-  latitude: -0.5648152974891937,
+  longitude: -0.5648152974891937,
+  latitude: 44.858523409633406,
   progress: 2
 )
 if projet4.save
@@ -166,8 +166,8 @@ end
 puts "\n Création de Checkpoints pour simulé un mouvement"
 
 checkpoint1 = Checkpoint.new(
-  longitude: 44.859703639565, 
-  latitude:  -0.5992085742389957,
+  longitude:  -0.5992085742389957,
+  latitude: 44.859703639565, 
   user: marie
 )
 if checkpoint1.save
@@ -177,8 +177,8 @@ else
 end
 
 checkpoint2 = Checkpoint.new(
-  longitude: 44.85856359036594, 
-  latitude:  -0.5983588937882691,
+  longitude:  -0.5983588937882691,
+  latitude: 44.85856359036594, 
   user: marie
 )
 
@@ -189,8 +189,8 @@ else
 end
 
 checkpoint3 = Checkpoint.new(
-  longitude: 44.85703631927222, 
-  latitude:  -0.5972057560337115,
+  longitude:  -0.5972057560337115,
+  latitude: 44.85703631927222, 
   user: marie
 )
 if checkpoint3.save
@@ -200,8 +200,8 @@ else
 end
 
 checkpoint4 = Checkpoint.new(
-  longitude: 44.855530519381546, 
-  latitude:  -0.5961284826051116,
+  longitude:  -0.5961284826051116,
+  latitude: 44.855530519381546, 
   user: marie
 )
 if checkpoint4.save
@@ -211,8 +211,8 @@ else
 end
 
 checkpoint5 = Checkpoint.new(
-  longitude: 44.854164509705065, 
-  latitude:  -0.5939891086131035,
+  longitude:  -0.5939891086131035,
+  latitude: 44.854164509705065, 
   user: marie
 )
 if checkpoint5.save
@@ -222,8 +222,8 @@ else
 end
 
 checkpoint6 = Checkpoint.new(
-  longitude: 44.85289527475242, 
-  latitude:  -0.5908634983253563,
+  longitude:  -0.5908634983253563,
+  latitude: 44.85289527475242, 
   user: marie
 )
 if checkpoint6.save
@@ -233,8 +233,8 @@ else
 end
 
 checkpoint7 = Checkpoint.new(
-  longitude: 44.853314770731664, 
-  latitude:  -0.5884054941643257,
+  longitude:  -0.5884054941643257,
+  latitude: 44.853314770731664, 
   user: marie
 )
 if checkpoint7.save
@@ -244,8 +244,8 @@ else
 end
 
 checkpoint8 = Checkpoint.new(
-  longitude: 44.854379631417146, 
-  latitude:  -0.5854923040475488,
+  longitude:  -0.5854923040475488,
+  latitude: 44.854379631417146, 
   user: marie
 )
 if checkpoint8.save
@@ -255,8 +255,8 @@ else
 end
 
 checkpoint9 = Checkpoint.new(
-  longitude: 44.8550142360191, 
-  latitude:  -0.5829432625915942,
+  longitude:  -0.5829432625915942,
+  latitude: 44.8550142360191, 
   user: marie
 )
 if checkpoint9.save
@@ -266,8 +266,8 @@ else
 end
 
 checkpoint10 = Checkpoint.new(
-  longitude: 44.85504650386176, 
-  latitude:  -0.5800148996096257,
+  longitude:  -0.5800148996096257,
+  latitude: 44.85504650386176, 
   user: marie
 )
 if checkpoint10.save
@@ -277,8 +277,8 @@ else
 end
 
 checkpoint11 = Checkpoint.new(
-  longitude: 44.85507877169143, 
-  latitude:  -0.5759940901856937,
+  longitude:  -0.5759940901856937,
+  latitude: 44.85507877169143, 
   user: marie
 )
 if checkpoint11.save
@@ -288,8 +288,8 @@ else
 end
 
 checkpoint12 = Checkpoint.new(
-  longitude: 44.85510028356444, 
-  latitude:  -0.5719884537751253,
+  longitude:  -0.5719884537751253,
+  latitude: 44.85510028356444, 
   user: marie
 )
 if checkpoint12.save
@@ -299,8 +299,8 @@ else
 end
 
 checkpoint13 = Checkpoint.new(
-  longitude: 44.85616511123424, 
-  latitude:  -0.5698642526483088,
+  longitude:  -0.5698642526483088,
+  latitude: 44.85616511123424, 
   user: marie
 )
 if checkpoint13.save
@@ -310,8 +310,8 @@ else
 end
 
 checkpoint14 = Checkpoint.new(
-  longitude: 44.85768164998401, 
-  latitude:  -0.5676490143303429,
+  longitude:  -0.5676490143303429,
+  latitude: 44.85768164998401, 
   user: marie
 )
 if checkpoint14.save
@@ -321,8 +321,8 @@ else
 end
 
 checkpoint15 = Checkpoint.new(
-  longitude: 44.858853982402636, 
-  latitude:  -0.5659799990266258,
+  longitude:  -0.5659799990266258,
+  latitude: 44.858853982402636, 
   user: marie
 )
 if checkpoint15.save
@@ -332,8 +332,8 @@ else
 end
 
 checkpoint16 = Checkpoint.new(
-  longitude: 44.86447139010389, 
-  latitude:  -0.5691383884174347,
+  longitude:  -0.5691383884174347,
+  latitude: 44.86447139010389, 
   user: sophie
 )
 if checkpoint16.save
@@ -343,8 +343,8 @@ else
 end
 
 checkpoint17 = Checkpoint.new(
-  longitude: 44.86377059506184, 
-  latitude:  -0.5664259360895968,
+  longitude:  -0.5664259360895968,
+  latitude: 44.86377059506184, 
   user: sophie
 )
 if checkpoint17.save
@@ -354,8 +354,8 @@ else
 end
 
 checkpoint18 = Checkpoint.new(
-  longitude: 44.86240938257408, 
-  latitude:  -0.5671769545966258,
+  longitude:  -0.5671769545966258,
+  latitude: 44.86240938257408, 
   user: sophie
 )
 if checkpoint18.save
@@ -365,8 +365,8 @@ else
 end
 
 checkpoint19 = Checkpoint.new(
-  longitude: 44.86122304822778, 
-  latitude:  -0.5679172442794399,
+  longitude:  -0.5679172442794399,
+  latitude: 44.86122304822778, 
   user: sophie
 )
 if checkpoint19.save
@@ -376,8 +376,8 @@ else
 end
 
 checkpoint20 = Checkpoint.new(
-  longitude: 44.85985417053263, 
-  latitude:  -0.5687487290587449,
+  longitude:  -0.5687487290587449,
+  latitude: 44.85985417053263, 
   user: sophie
 )
 if checkpoint20.save
@@ -387,8 +387,8 @@ else
 end
 
 checkpoint21 = Checkpoint.new(
-  longitude: 44.85836738039367, 
-  latitude:  -0.5668604539212165,
+  longitude:  -0.5668604539212165,
+  latitude: 44.85836738039367, 
   user: sophie
 )
 if checkpoint21.save
@@ -398,8 +398,8 @@ else
 end
 
 checkpoint22 = Checkpoint.new(
-  longitude: 44.858853982402636, 
-  latitude:  -0.5659799990266258,
+  longitude:  -0.5659799990266258,
+  latitude: 44.858853982402636, 
   user: sophie
 )
 if checkpoint22.save

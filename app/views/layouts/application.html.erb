@@ -9,9 +9,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
   <body>
-    <div id="user" class="d-none" data-user='<%= @user %>'></div>
     <%= render 'shared/flashes' %>
     <%= yield %>
-    <%= render 'shared/map' %>
   </body>
 </html>

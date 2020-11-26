@@ -1,1 +1,1 @@
-json.extract! @checkpoint, :id, :latitude, :longitude
+json.extract! @checkpoint, :id, :longitude, :latitude
