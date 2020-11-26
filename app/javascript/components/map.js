@@ -3,9 +3,11 @@ import mapboxgl from 'mapbox-gl';
 import * as d3 from "d3";
 
 const token = 'pk.eyJ1IjoianVsaWFubGYiLCJhIjoiY2tndzl6aXhqMDAxazMwb3NoeTNtNjN2biJ9.rKcfejZ9GeY9RhR-li-d4w';
-let positions = [];
+const options = { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 };
 
-const addPoint = (map, coord) => {
+let map;
+
+const addPoint = (coord) => {
   // const popup = new mapboxgl.Popup({ offset: 25 })
   //   .setHTML('<h3>Project Description</h3><a href="' + project_path + project.id + '">more information</a>');
   new mapboxgl.Marker()
@@ -14,19 +16,12 @@ const addPoint = (map, coord) => {
     .addTo(map);
 };
 
-const trackUser = (map) => {
-  map.on('load', function() {
-    setInterval()
-  });
-};
-
-
-const generateFakeMove = (map) => {
+const generateFakeMove = () => {
   map.on('load', function() {
     d3.json(
-      'https://docs.mapbox.com/mapbox-gl-js/assets/hike.geojson').then((data) => {
+      `http://localhost:3000/api/v1/checkpoints`).then((checkpoints) => {
+      let data = { type: "FeatureCollection", features: [{ type: "Feature", geometry: { type: "LineString", coordinates: checkpoints } }] }
       const coordinates = data.features[0].geometry.coordinates;
-      console.log(coordinates);
       data.features[0].geometry.coordinates = [coordinates[0]];
       map.addSource('trace', { type: 'geojson', data: data });
       map.addLayer({
@@ -39,37 +34,23 @@ const generateFakeMove = (map) => {
           'line-width': 5
         }
       });
-      map.jumpTo({ 'center': coordinates[0], 'zoom': 14 });
+      map.jumpTo({ 'center': coordinates[0], 'zoom': 13 });
       map.setPitch(30);
-      var i = 0;
-      var timer = window.setInterval(function() {
+      let i = 0;
+      const timer = window.setInterval(function() {
         if (i < coordinates.length) {
           data.features[0].geometry.coordinates.push(
             coordinates[i]
           );
           map.getSource('trace').setData(data);
           map.panTo(coordinates[i]);
-          i += 100;
+          i += 1;
         } else {
           window.clearInterval(timer);
         }
       }, 10);
     });
   });
-};
-
-
-const initMap = (center) => {
-  mapboxgl.accessToken = token;
-  const map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v9',
-    center: center, // starting position
-    zoom: 12
-  });
-  addPoint(map, center);
-  generateFakeMove(map);
-  // trackUser(map);
 };
 
 const transformPos = (pos) => {
@@ -80,11 +61,71 @@ const transformPos = (pos) => {
   });
 };
 
-const success = (pos) => {
+const saveCheckpoint = (position) => {
+
+};
+
+
+const trackUser = (pos) => {
   transformPos(pos).then((position) => {
     if (position !== []) {
+      const data = { type: "FeatureCollection", features: [{ type: "Feature", geometry: { type: "LineString", coordinates: [position] } }] }
+      map.getSource('trace').setData(data);
+      map.panTo(position);
+      saveCheckpoint(position);
+    }
+  });
+
+};
+
+
+const generateMove = (center) => {
+  map.on('load', function() {
+    const data = { type: "FeatureCollection", features: [{ type: "Feature", geometry: { type: "LineString", coordinates: [center] } }] }
+    map.addSource('trace', { type: 'geojson', data: data });
+    map.addLayer({
+      'id': 'trace',
+      'type': 'line',
+      'source': 'trace',
+      'paint': {
+        'line-color': '#669df6',
+        'line-opacity': 0.75,
+        'line-width': 5
+      }
+    });
+    map.jumpTo({ 'center': center, 'zoom': 13 });
+    map.setPitch(30);
+    let i = 0;
+    const timer = window.setInterval(function() {
+      if (i < 4) {
+        navigator.geolocation.getCurrentPosition(trackUser, error, options);
+        i += 1;
+      } else {
+        console.log('FINI');
+        console.log(positions);
+        window.clearInterval(timer);
+      }
+    }, 5000);
+  });
+};
+
+const initMap = (center) => {
+  mapboxgl.accessToken = token;
+  map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v9',
+    center: center, // starting position
+    zoom: 12
+  });
+  generateFakeMove();
+  // generateMove(center);
+};
+
+const init = (pos) => {
+  transformPos(pos).then((position) => {
+    if (position !== []) {
+      saveCheckpoint(position);
       initMap(position)
-      positions.push(position);
     }
   });
 }
@@ -94,12 +135,10 @@ const error = (err) => {
 }
 
 const initMapWithUser = () => {
-  const options = {
-    enableHighAccuracy: true,
-    timeout: 5000,
-    maximumAge: 0
-  };
-  navigator.geolocation.getCurrentPosition(success, error, options);
+  const user = document.querySelector('#user').dataset.user
+  if (user) {
+    navigator.geolocation.getCurrentPosition(init, error, options);
+  }
 };
 
 export { initMapWithUser };

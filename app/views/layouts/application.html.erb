@@ -7,9 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
-    <body>
-      <%= render 'shared/flashes' %>
-      <%= yield %>
-      <%= render 'shared/map' %>
-    </body>
-  </html>
+  </head>
+  <body>
+    <div id="user" class="d-none" data-user='<%= @user %>'></div>
+    <%= render 'shared/flashes' %>
+    <%= yield %>
+    <%= render 'shared/map' %>
+  </body>
+</html>
