@@ -13,19 +13,19 @@ print " - "
 print " Création echouée: 'X'"
 puts "\n\n Création de 3 Utilisateurs"
 
-julian = User.new(email:"julian@gmail.com", password: "iamcitizen1")
-if julian.save
-  print('.')
-else
-  julian = User.where(email: "julian@gmail.com").first
-  print('-')
-end
-
-violaine = User.new(email:"violaine@gmail.com", password: "iamcitizen2")
+violaine = User.new(email:"violaine@gmail.com", password: "iamcitizen1")
 if violaine.save
   print('.')
 else
   violaine = User.where(email: "violaine@gmail.com").first
+  print('-')
+end
+
+julian = User.new(email:"julian@gmail.com", password: "iamcitizen2")
+if julian.save
+  print('.')
+else
+  julian = User.where(email: "julian@gmail.com").first
   print('-')
 end
 
@@ -169,7 +169,7 @@ puts "\n Création de Checkpoints pour simuler un mouvement"
 checkpoint1 = Checkpoint.new(
   longitude:  -0.5992085742389957,
   latitude: 44.859703639565, 
-  user: violaine
+  user: julian
 )
 if checkpoint1.save
   print('.')
@@ -180,7 +180,7 @@ end
 checkpoint2 = Checkpoint.new(
   longitude:  -0.5983588937882691,
   latitude: 44.85856359036594, 
-  user: violaine
+  user: julian
 )
 
 if checkpoint2.save
@@ -192,7 +192,7 @@ end
 checkpoint3 = Checkpoint.new(
   longitude:  -0.5972057560337115,
   latitude: 44.85703631927222, 
-  user: violaine
+  user: julian
 )
 if checkpoint3.save
   print('.')
@@ -203,7 +203,7 @@ end
 checkpoint4 = Checkpoint.new(
   longitude:  -0.5961284826051116,
   latitude: 44.855530519381546, 
-  user: violaine
+  user: julian
 )
 if checkpoint4.save
   print('.')
@@ -214,7 +214,7 @@ end
 checkpoint5 = Checkpoint.new(
   longitude:  -0.5939891086131035,
   latitude: 44.854164509705065, 
-  user: violaine
+  user: julian
 )
 if checkpoint5.save
   print('.')
@@ -225,7 +225,7 @@ end
 checkpoint6 = Checkpoint.new(
   longitude:  -0.5908634983253563,
   latitude: 44.85289527475242, 
-  user: violaine
+  user: julian
 )
 if checkpoint6.save
   print('.')
@@ -236,7 +236,7 @@ end
 checkpoint7 = Checkpoint.new(
   longitude:  -0.5884054941643257,
   latitude: 44.853314770731664, 
-  user: violaine
+  user: julian
 )
 if checkpoint7.save
   print('.')
@@ -247,7 +247,7 @@ end
 checkpoint8 = Checkpoint.new(
   longitude:  -0.5854923040475488,
   latitude: 44.854379631417146, 
-  user: violaine
+  user: julian
 )
 if checkpoint8.save
   print('.')
@@ -258,7 +258,7 @@ end
 checkpoint9 = Checkpoint.new(
   longitude:  -0.5829432625915942,
   latitude: 44.8550142360191, 
-  user: violaine
+  user: julian
 )
 if checkpoint9.save
   print('.')
@@ -269,7 +269,7 @@ end
 checkpoint10 = Checkpoint.new(
   longitude:  -0.5800148996096257,
   latitude: 44.85504650386176, 
-  user: violaine
+  user: julian
 )
 if checkpoint10.save
   print('.')
@@ -280,7 +280,7 @@ end
 checkpoint11 = Checkpoint.new(
   longitude:  -0.5759940901856937,
   latitude: 44.85507877169143, 
-  user: violaine
+  user: julian
 )
 if checkpoint11.save
   print('.')
@@ -291,7 +291,7 @@ end
 checkpoint12 = Checkpoint.new(
   longitude:  -0.5719884537751253,
   latitude: 44.85510028356444, 
-  user: violaine
+  user: julian
 )
 if checkpoint12.save
   print('.')
@@ -302,7 +302,7 @@ end
 checkpoint13 = Checkpoint.new(
   longitude:  -0.5698642526483088,
   latitude: 44.85616511123424, 
-  user: violaine
+  user: julian
 )
 if checkpoint13.save
   print('.')
@@ -313,7 +313,7 @@ end
 checkpoint14 = Checkpoint.new(
   longitude:  -0.5676490143303429,
   latitude: 44.85768164998401, 
-  user: violaine
+  user: julian
 )
 if checkpoint14.save
   print('.')
@@ -324,7 +324,7 @@ end
 checkpoint15 = Checkpoint.new(
   longitude:  -0.5659799990266258,
   latitude: 44.858853982402636, 
-  user: violaine
+  user: julian
 )
 if checkpoint15.save
   print('.')
@@ -335,7 +335,7 @@ end
 checkpoint16 = Checkpoint.new(
   longitude:  -0.5691383884174347,
   latitude: 44.86447139010389, 
-  user: julian
+  user: violaine
 )
 if checkpoint16.save
   print('.')
@@ -346,7 +346,7 @@ end
 checkpoint17 = Checkpoint.new(
   longitude:  -0.5664259360895968,
   latitude: 44.86377059506184, 
-  user: julian
+  user: violaine
 )
 if checkpoint17.save
   print('.')
@@ -357,7 +357,7 @@ end
 checkpoint18 = Checkpoint.new(
   longitude:  -0.5671769545966258,
   latitude: 44.86240938257408, 
-  user: julian
+  user: violaine
 )
 if checkpoint18.save
   print('.')
@@ -368,7 +368,7 @@ end
 checkpoint19 = Checkpoint.new(
   longitude:  -0.5679172442794399,
   latitude: 44.86122304822778, 
-  user: julian
+  user: violaine
 )
 if checkpoint19.save
   print('.')
