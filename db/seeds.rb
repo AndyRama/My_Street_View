@@ -3,28 +3,29 @@ puts "Suppression des Checkpoints existant (et des Project tant qu'ils ne seront
 Question.destroy_all
 Project.destroy_all
 Checkpoint.destroy_all
+User.destroy_all
 
 puts "Seeding DB:"
-print "\n Création reussi: '.'"
+print "\n Création reussie: '.'"
 print " - "
 print " Déjà existant: '-'"
 print " - "
-print " Création echoué: 'X'"
+print " Création echouée: 'X'"
 puts "\n\n Création de 3 Utilisateurs"
 
-marie = User.new(email:"marie@gmail.com", password: "iamcitizen1")
+julian = User.new(email:"julian@gmail.com", password: "iamcitizen1")
 if marie.save
   print('.')
 else
-  marie = User.where(email: "marie@gmail.com").first
+  julian = User.where(email: "julian@gmail.com").first
   print('-')
 end
 
-sophie = User.new(email:"sophie@gmail.com", password: "iamcitizen2")
+violaine = User.new(email:"violaine@gmail.com", password: "iamcitizen2")
 if sophie.save
   print('.')
 else
-  sophie = User.where(email: "sophie@gmail.com").first
+  violaine = User.where(email: "violaine@gmail.com").first
   print('-')
 end
 
@@ -47,8 +48,8 @@ puts "\n Création de 4 projets"
 
 #wagon bdx
 projet1 = Project.new(
-  title: "Project ecologique?",
-  description: "Amenagement d'un espace vert sur la place dans le cadre d'un project ecologie",
+  title: "Project écologique",
+  description: "Aménagement d'un espace vert sur la place dans le cadre d'un project écologique",
   longitude:  -0.5659754120653856,
   latitude: 44.85959815077221,
   progress: 2
@@ -57,14 +58,14 @@ if projet1.save
   projet1.photo.attach(io: open("https://res.cloudinary.com/dbtnehfrf/image/upload/v1606217206/my%20city%20views/luca-herrmann-c3hVKjmw2aU-unsplash_ojroku.jpg"), filename:'projet1')
   print('.')
 else
-  projet1 = Project.where(title: "Project ecologique?").first
+  projet1 = Project.where(title: "Project écologique").first
   print('-')
 end
 
 #total
 projet2 = Project.new(
   title: "Refaire Chaussée ?",
-  description: "Suite à la constatation de nombreux troues present sur la chaussée",
+  description: "Suite à la constatation de nombreux trous présents sur la chaussée",
   longitude: -0.5703369634805979,
   latitude: 44.861582981544565,
   progress: 1
@@ -80,7 +81,7 @@ end
 #brasserie du Medoc
 projet3 = Project.new(
   title: "Piste cyclable ?",
-  description: "Solicitation suite a de multiple demandes amenagement d'une piste cyclable",
+  description: "Solicitation suite a de multiple demandes d'amenagement d'une piste cyclable",
   longitude: -0.5669074204334726,
   latitude: 44.85846256846444,
   progress: 1
@@ -96,7 +97,7 @@ end
 #union sportive
 projet4 = Project.new(
   title: "Espace vert au chatron ?",
-  description: "Amenagement d'un espace vert dans le cadre d'un project ecologie",
+  description: "Amenagement d'un espace vert dans le cadre d'un project écologique",
   longitude: -0.5648152974891937,
   latitude: 44.858523409633406,
   progress: 1
@@ -105,11 +106,11 @@ if projet4.save
   projet4.photo.attach(io: open("https://res.cloudinary.com/dbtnehfrf/image/upload/v1606217203/my%20city%20views/borna-hrzajna-8IPrifbjo-0-unsplash_1_cxd7iz.jpg"), filename:'projet4')
   print('.')
 else
-  projet4 = Project.where(title: "Espace vert au chatron ?").first
+  projet4 = Project.where(title: "Espace vert aux Chartrons ?").first
   print('-')
 end
 
-puts "\n Création de 4 questions avec deux possible réponses"
+puts "\n Création de 4 questions avec deux possibles réponses"
 
 question1 = Question.new(
   title: "Selon vous, de quel coté la piste cyclable doit etre ?",
@@ -163,7 +164,7 @@ else
   print('-')
 end
 
-puts "\n Création de Checkpoints pour simulé un mouvement"
+puts "\n Création de Checkpoints pour simuler un mouvement"
 
 checkpoint1 = Checkpoint.new(
   longitude:  -0.5992085742389957,
