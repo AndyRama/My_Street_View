@@ -9,9 +9,11 @@
           <h5>Description</h5>
           <p class="descriptionbody" style="margin-left: 5px; margin-right: 5px;"> <%= @project.description %> </p>
         </div>
-        <div class="footer">
+        <div class="card-footer" style="background-color: transparent;">
           <% @questions.each do |question| %>
+          <div style="margin-bottom: 10px;">
             <%= question.title %>
+          </div>
             <% if @user.feedbacks.where(question_id: question) != [] %>
               <div class="text-success">
                 <p>Vous avez répondu a cette question</p>
