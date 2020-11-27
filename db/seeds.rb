@@ -14,7 +14,7 @@ print " Création echouée: 'X'"
 puts "\n\n Création de 3 Utilisateurs"
 
 julian = User.new(email:"julian@gmail.com", password: "iamcitizen1")
-if marie.save
+if julian.save
   print('.')
 else
   julian = User.where(email: "julian@gmail.com").first
@@ -22,7 +22,7 @@ else
 end
 
 violaine = User.new(email:"violaine@gmail.com", password: "iamcitizen2")
-if sophie.save
+if violaine.save
   print('.')
 else
   violaine = User.where(email: "violaine@gmail.com").first
