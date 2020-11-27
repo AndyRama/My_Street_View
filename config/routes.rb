@@ -19,5 +19,9 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   root to: 'projects#index' 
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :checkpoints, only: %i[create show index]
+    end
+  end 
 end
