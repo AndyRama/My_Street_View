@@ -379,7 +379,7 @@ end
 checkpoint20 = Checkpoint.new(
   longitude:  -0.5687487290587449,
   latitude: 44.85985417053263, 
-  user: julian
+  user: violaine
 )
 if checkpoint20.save
   print('.')
@@ -390,7 +390,7 @@ end
 checkpoint21 = Checkpoint.new(
   longitude:  -0.5668604539212165,
   latitude: 44.85836738039367, 
-  user: julian
+  user: violaine
 )
 if checkpoint21.save
   print('.')
@@ -401,7 +401,7 @@ end
 checkpoint22 = Checkpoint.new(
   longitude:  -0.5659799990266258,
   latitude: 44.858853982402636, 
-  user: julian
+  user: violaine
 )
 if checkpoint22.save
   print('.')
