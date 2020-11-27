@@ -2,10 +2,11 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import mapboxgl from 'mapbox-gl';
 import * as d3 from "d3";
 
+const origin = window.document.location.origin
 const token = 'pk.eyJ1IjoianVsaWFubGYiLCJhIjoiY2tndzl6aXhqMDAxazMwb3NoeTNtNjN2biJ9.rKcfejZ9GeY9RhR-li-d4w';
 const options = { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 };
-const color = ['#279AF1', '#03CEA4', '#E87310'];
-// [bleu , vert, orange]
+const color = ['#279AF1', '#E87310', '#03CEA4'];
+// [bleu, orange, vert]
 
 let map;
 
@@ -26,7 +27,7 @@ const addPoint = (coord, descr, progress) => {
 const generateFakeMove = () => {
   map.on('load', function() {
     d3.json(
-      `http://localhost:3000/api/v1/checkpoints`).then((checkpoints) => {
+      `${origin}/api/v1/checkpoints`).then((checkpoints) => {
       let data = { type: "FeatureCollection", features: [{ type: "Feature", geometry: { type: "LineString", coordinates: checkpoints } }] }
       const coordinates = data.features[0].geometry.coordinates;
       data.features[0].geometry.coordinates = [coordinates[0]];
