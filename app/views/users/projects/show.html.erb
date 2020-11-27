@@ -12,7 +12,9 @@
       <div class="footer">
         <% if @project.progress == 1 %>
           <% @questions.each do |question| %>
-            <%= question.title %>
+            <div style="margin-bottom: 10px;">
+              <%= question.title %>
+            </div>
             <% if @user.feedbacks.where(question_id: question) != [] %>
               <div class="text-success">
                 <p>Vous avez répondu a cette question</p>
