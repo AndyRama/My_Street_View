@@ -154,8 +154,8 @@ const error = (err) => {
 }
 
 const initMapWithUser = () => {
-  const user = document.querySelector('#user').dataset.user
-  if (user) {
+  const user = document.querySelector('#user')
+  if (user && user.dataset.user) {
     navigator.geolocation.getCurrentPosition(init, error, options);
   }
 };
