@@ -18,9 +18,10 @@
 
 // index for admin
 .index-container {
-  grid-template-columns: 1fr 1fr 1fr;
-  display: flex;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   justify-content: space-evenly;
+  display: grid;
+  place-items: center;
 }
 
 .all-projects {
@@ -70,7 +71,7 @@
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
   .index-container {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
   .background {
     background-repeat: repeat;
