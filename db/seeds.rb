@@ -51,7 +51,7 @@ projet1 = Project.new(
   description: "Amenagement d'un espace vert sur la place dans le cadre d'un project ecologie",
   longitude:  -0.5659754120653856,
   latitude: 44.85959815077221,
-  progress: 3
+  progress: 2
 )
 if projet1.save
   projet1.photo.attach(io: open("https://res.cloudinary.com/dbtnehfrf/image/upload/v1606217206/my%20city%20views/luca-herrmann-c3hVKjmw2aU-unsplash_ojroku.jpg"), filename:'projet1')
@@ -99,7 +99,7 @@ projet4 = Project.new(
   description: "Amenagement d'un espace vert dans le cadre d'un project ecologie",
   longitude: -0.5648152974891937,
   latitude: 44.858523409633406,
-  progress: 2
+  progress: 1
 )
 if projet4.save
   projet4.photo.attach(io: open("https://res.cloudinary.com/dbtnehfrf/image/upload/v1606217203/my%20city%20views/borna-hrzajna-8IPrifbjo-0-unsplash_1_cxd7iz.jpg"), filename:'projet4')
