@@ -2,9 +2,10 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import mapboxgl from 'mapbox-gl';
 import * as d3 from "d3";
 
-const origin = window.document.location.origin
 const token = 'pk.eyJ1IjoianVsaWFubGYiLCJhIjoiY2tndzl6aXhqMDAxazMwb3NoeTNtNjN2biJ9.rKcfejZ9GeY9RhR-li-d4w';
 const options = { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 };
+const origin = window.document.location.origin
+const user = document.querySelector('#user')
 const color = ['#279AF1', '#E87310', '#03CEA4'];
 // [bleu, orange, vert]
 
@@ -69,7 +70,11 @@ const transformPos = (pos) => {
 };
 
 const saveCheckpoint = (position) => {
-
+  fetch(`${origin}/api/v1/checkpoints`, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: `{ "checkpoint": { "longitude": ${position[0]}, "latitude": ${position[1]} } }`
+  })
 };
 
 
@@ -79,7 +84,7 @@ const trackUser = (pos) => {
       const data = { type: "FeatureCollection", features: [{ type: "Feature", geometry: { type: "LineString", coordinates: [position] } }] }
       map.getSource('trace').setData(data);
       map.panTo(position);
-      // saveCheckpoint(position);
+      saveCheckpoint(position);
     }
   });
 
@@ -104,10 +109,11 @@ const generateMove = (center) => {
     map.setPitch(30);
     let i = 0;
     const timer = window.setInterval(function() {
-      if (i < 4) {
+      if (i < 20) {
         navigator.geolocation.getCurrentPosition(trackUser, error, options);
         i += 1;
       } else {
+        console.log('Stop tracking');
         window.clearInterval(timer);
       }
     }, 5000);
@@ -137,14 +143,13 @@ const initMap = (center) => {
     zoom: 12
   });
   drawProject();
-  generateFakeMove();
-  // generateMove(center);
+  // generateFakeMove(); // Simulate
+  generateMove(center); // Tracking
 };
 
 const init = (pos) => {
   transformPos(pos).then((position) => {
     if (position !== []) {
-      saveCheckpoint(position);
       initMap(position)
     }
   });
@@ -155,7 +160,6 @@ const error = (err) => {
 }
 
 const initMapWithUser = () => {
-  const user = document.querySelector('#user')
   if (user && user.dataset.user) {
     navigator.geolocation.getCurrentPosition(init, error, options);
   }
