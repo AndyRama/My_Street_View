@@ -1,7 +1,14 @@
 <div class='map d-flex flex-column position-relative'>
   <div id='map'>
   </div>
-  <div class='info-box position-absolute d-none'>
-    <div id='calculated-line'></div>
+  <div class='info-box position-absolute'>
+    <div class="custom-control custom-switch">
+      <input type="checkbox" class="custom-control-input" id="map-mode">
+      <label class="custom-control-label" for="map-mode" id='map-mode-label'>Simulation</label>
+    </div>
+    <div class="d-flex row justify-content-between p-1"">
+      <input type="number" name="track-nbr" id="track-nbr" class="col-6 p-0 m-0 d-none" id="track-option">
+      <input type="submit" value="lancer" class ="col-6 p-0 m-0" id="lancer">
+    </div>
   </div>
 </div>

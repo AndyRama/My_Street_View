@@ -7,6 +7,7 @@ const options = { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 };
 const origin = window.document.location.origin
 const user = document.querySelector('#user')
 const color = ['#279AF1', '#E87310', '#03CEA4'];
+const mode = document.querySelector('#map-mode');
 // [bleu, orange, vert]
 
 let map;
@@ -26,39 +27,37 @@ const addPoint = (coord, descr, progress) => {
 };
 
 const generateFakeMove = () => {
-  map.on('load', function() {
-    d3.json(
-      `${origin}/api/v1/checkpoints`).then((checkpoints) => {
-      let data = { type: "FeatureCollection", features: [{ type: "Feature", geometry: { type: "LineString", coordinates: checkpoints } }] }
-      const coordinates = data.features[0].geometry.coordinates;
-      data.features[0].geometry.coordinates = [coordinates[0]];
-      map.addSource('trace', { type: 'geojson', data: data });
-      map.addLayer({
-        'id': 'trace',
-        'type': 'line',
-        'source': 'trace',
-        'paint': {
-          'line-color': '#000000',
-          'line-opacity': 0.5,
-          'line-width': 5
-        }
-      });
-      map.jumpTo({ 'center': coordinates[0], 'zoom': 13 });
-      map.setPitch(30);
-      let i = 0;
-      const timer = window.setInterval(function() {
-        if (i < coordinates.length) {
-          data.features[0].geometry.coordinates.push(
-            coordinates[i]
-          );
-          map.getSource('trace').setData(data);
-          map.panTo(coordinates[i]);
-          i += 1;
-        } else {
-          window.clearInterval(timer);
-        }
-      }, 10);
+  d3.json(
+    `${origin}/api/v1/checkpoints`).then((checkpoints) => {
+    let data = { type: "FeatureCollection", features: [{ type: "Feature", geometry: { type: "LineString", coordinates: checkpoints } }] }
+    const coordinates = data.features[0].geometry.coordinates;
+    data.features[0].geometry.coordinates = [coordinates[0]];
+    map.addSource('trace', { type: 'geojson', data: data });
+    map.addLayer({
+      'id': 'trace',
+      'type': 'line',
+      'source': 'trace',
+      'paint': {
+        'line-color': '#000000',
+        'line-opacity': 0.5,
+        'line-width': 5
+      }
     });
+    map.jumpTo({ 'center': coordinates[0], 'zoom': 13 });
+    map.setPitch(30);
+    let i = 0;
+    const timer = window.setInterval(function() {
+      if (i < coordinates.length) {
+        data.features[0].geometry.coordinates.push(
+          coordinates[i]
+        );
+        map.getSource('trace').setData(data);
+        map.panTo(coordinates[i]);
+        i += 1;
+      } else {
+        window.clearInterval(timer);
+      }
+    }, 10);
   });
 };
 
@@ -87,11 +86,10 @@ const trackUser = (pos) => {
       saveCheckpoint(position);
     }
   });
-
 };
 
 
-const generateMove = (center) => {
+const generateMove = (center, nbr) => {
   map.on('load', function() {
     const data = { type: "FeatureCollection", features: [{ type: "Feature", geometry: { type: "LineString", coordinates: [center] } }] }
     map.addSource('trace', { type: 'geojson', data: data });
@@ -109,14 +107,14 @@ const generateMove = (center) => {
     map.setPitch(30);
     let i = 0;
     const timer = window.setInterval(function() {
-      if (i < 20) {
+      if (i < nbr) {
         navigator.geolocation.getCurrentPosition(trackUser, error, options);
         i += 1;
       } else {
         console.log('Stop tracking');
         window.clearInterval(timer);
       }
-    }, 5000);
+    }, 60000);
   });
 };
 
@@ -132,7 +130,29 @@ const drawProject = () => {
   });
 };
 
-
+const initMode = (center) => {
+  const nbr = document.querySelector('#track-nbr');
+  const label = document.querySelector('#map-mode-label');
+  const lancer = document.querySelector('#lancer');
+  mode.onclick = function(event) {
+    if (event.currentTarget.checked) {
+      nbr.classList.remove('d-none');
+      label.innerText = "Traçage";
+    } else {
+      nbr.classList.add('d-none');
+      label.innerText = "Simulation";
+    }
+  }
+  lancer.onclick = function(event) {
+    if (mode.checked) {
+      console.log('Tracing');
+      generateMove(center, nbr.value); // Tracking
+    } else {
+      console.log('Simulation');
+      generateFakeMove(); // Simulate
+    }
+  }
+};
 
 const initMap = (center) => {
   mapboxgl.accessToken = token;
@@ -143,8 +163,14 @@ const initMap = (center) => {
     zoom: 12
   });
   drawProject();
-  // generateFakeMove(); // Simulate
-  generateMove(center); // Tracking
+  map.on('load', function() {
+    if (mode.parentNode.parentNode.classList.contains('d-none')) {
+      console.log('Simulation');
+      generateFakeMove(); // Simulate
+    } else {
+      initMode(center);
+    }
+  });
 };
 
 const init = (pos) => {
