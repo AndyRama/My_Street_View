@@ -3,28 +3,29 @@ puts "Suppression des Checkpoints existant (et des Project tant qu'ils ne seront
 Question.destroy_all
 Project.destroy_all
 Checkpoint.destroy_all
+User.destroy_all
 
 puts "Seeding DB:"
-print "\n Création reussi: '.'"
+print "\n Création reussie: '.'"
 print " - "
 print " Déjà existant: '-'"
 print " - "
-print " Création echoué: 'X'"
+print " Création echouée: 'X'"
 puts "\n\n Création de 3 Utilisateurs"
 
-marie = User.new(email:"marie@gmail.com", password: "iamcitizen1")
-if marie.save
+violaine = User.new(email:"violaine@gmail.com", password: "iamcitizen1")
+if violaine.save
   print('.')
 else
-  marie = User.where(email: "marie@gmail.com").first
+  violaine = User.where(email: "violaine@gmail.com").first
   print('-')
 end
 
-sophie = User.new(email:"sophie@gmail.com", password: "iamcitizen2")
-if sophie.save
+julian = User.new(email:"julian@gmail.com", password: "iamcitizen2")
+if julian.save
   print('.')
 else
-  sophie = User.where(email: "sophie@gmail.com").first
+  julian = User.where(email: "julian@gmail.com").first
   print('-')
 end
 
@@ -47,8 +48,8 @@ puts "\n Création de 4 projets"
 
 #wagon bdx
 projet1 = Project.new(
-  title: "Project ecologique?",
-  description: "Amenagement d'un espace vert sur la place dans le cadre d'un project ecologie",
+  title: "Project écologique",
+  description: "Aménagement d'un espace vert sur la place dans le cadre d'un project écologique",
   longitude:  -0.5659754120653856,
   latitude: 44.85959815077221,
   progress: 2
@@ -57,14 +58,14 @@ if projet1.save
   projet1.photo.attach(io: open("https://res.cloudinary.com/dbtnehfrf/image/upload/v1606217206/my%20city%20views/luca-herrmann-c3hVKjmw2aU-unsplash_ojroku.jpg"), filename:'projet1')
   print('.')
 else
-  projet1 = Project.where(title: "Project ecologique?").first
+  projet1 = Project.where(title: "Project écologique").first
   print('-')
 end
 
 #total
 projet2 = Project.new(
   title: "Refaire Chaussée ?",
-  description: "Suite à la constatation de nombreux troues present sur la chaussée",
+  description: "Suite à la constatation de nombreux trous présents sur la chaussée",
   longitude: -0.5703369634805979,
   latitude: 44.861582981544565,
   progress: 1
@@ -80,7 +81,7 @@ end
 #brasserie du Medoc
 projet3 = Project.new(
   title: "Piste cyclable ?",
-  description: "Solicitation suite a de multiple demandes amenagement d'une piste cyclable",
+  description: "Solicitation suite a de multiple demandes d'amenagement d'une piste cyclable",
   longitude: -0.5669074204334726,
   latitude: 44.85846256846444,
   progress: 1
@@ -96,7 +97,7 @@ end
 #union sportive
 projet4 = Project.new(
   title: "Espace vert au chatron ?",
-  description: "Amenagement d'un espace vert dans le cadre d'un project ecologie",
+  description: "Amenagement d'un espace vert dans le cadre d'un project écologique",
   longitude: -0.5648152974891937,
   latitude: 44.858523409633406,
   progress: 1
@@ -105,11 +106,11 @@ if projet4.save
   projet4.photo.attach(io: open("https://res.cloudinary.com/dbtnehfrf/image/upload/v1606217203/my%20city%20views/borna-hrzajna-8IPrifbjo-0-unsplash_1_cxd7iz.jpg"), filename:'projet4')
   print('.')
 else
-  projet4 = Project.where(title: "Espace vert au chatron ?").first
+  projet4 = Project.where(title: "Espace vert aux Chartrons ?").first
   print('-')
 end
 
-puts "\n Création de 4 questions avec deux possible réponses"
+puts "\n Création de 4 questions avec deux possibles réponses"
 
 question1 = Question.new(
   title: "Selon vous, de quel coté la piste cyclable doit etre ?",
@@ -163,12 +164,12 @@ else
   print('-')
 end
 
-puts "\n Création de Checkpoints pour simulé un mouvement"
+puts "\n Création de Checkpoints pour simuler un mouvement"
 
 checkpoint1 = Checkpoint.new(
   longitude:  -0.5992085742389957,
   latitude: 44.859703639565, 
-  user: marie
+  user: julian
 )
 if checkpoint1.save
   print('.')
@@ -179,7 +180,7 @@ end
 checkpoint2 = Checkpoint.new(
   longitude:  -0.5983588937882691,
   latitude: 44.85856359036594, 
-  user: marie
+  user: julian
 )
 
 if checkpoint2.save
@@ -191,7 +192,7 @@ end
 checkpoint3 = Checkpoint.new(
   longitude:  -0.5972057560337115,
   latitude: 44.85703631927222, 
-  user: marie
+  user: julian
 )
 if checkpoint3.save
   print('.')
@@ -202,7 +203,7 @@ end
 checkpoint4 = Checkpoint.new(
   longitude:  -0.5961284826051116,
   latitude: 44.855530519381546, 
-  user: marie
+  user: julian
 )
 if checkpoint4.save
   print('.')
@@ -213,7 +214,7 @@ end
 checkpoint5 = Checkpoint.new(
   longitude:  -0.5939891086131035,
   latitude: 44.854164509705065, 
-  user: marie
+  user: julian
 )
 if checkpoint5.save
   print('.')
@@ -224,7 +225,7 @@ end
 checkpoint6 = Checkpoint.new(
   longitude:  -0.5908634983253563,
   latitude: 44.85289527475242, 
-  user: marie
+  user: julian
 )
 if checkpoint6.save
   print('.')
@@ -235,7 +236,7 @@ end
 checkpoint7 = Checkpoint.new(
   longitude:  -0.5884054941643257,
   latitude: 44.853314770731664, 
-  user: marie
+  user: julian
 )
 if checkpoint7.save
   print('.')
@@ -246,7 +247,7 @@ end
 checkpoint8 = Checkpoint.new(
   longitude:  -0.5854923040475488,
   latitude: 44.854379631417146, 
-  user: marie
+  user: julian
 )
 if checkpoint8.save
   print('.')
@@ -257,7 +258,7 @@ end
 checkpoint9 = Checkpoint.new(
   longitude:  -0.5829432625915942,
   latitude: 44.8550142360191, 
-  user: marie
+  user: julian
 )
 if checkpoint9.save
   print('.')
@@ -268,7 +269,7 @@ end
 checkpoint10 = Checkpoint.new(
   longitude:  -0.5800148996096257,
   latitude: 44.85504650386176, 
-  user: marie
+  user: julian
 )
 if checkpoint10.save
   print('.')
@@ -279,7 +280,7 @@ end
 checkpoint11 = Checkpoint.new(
   longitude:  -0.5759940901856937,
   latitude: 44.85507877169143, 
-  user: marie
+  user: julian
 )
 if checkpoint11.save
   print('.')
@@ -290,7 +291,7 @@ end
 checkpoint12 = Checkpoint.new(
   longitude:  -0.5719884537751253,
   latitude: 44.85510028356444, 
-  user: marie
+  user: julian
 )
 if checkpoint12.save
   print('.')
@@ -301,7 +302,7 @@ end
 checkpoint13 = Checkpoint.new(
   longitude:  -0.5698642526483088,
   latitude: 44.85616511123424, 
-  user: marie
+  user: julian
 )
 if checkpoint13.save
   print('.')
@@ -312,7 +313,7 @@ end
 checkpoint14 = Checkpoint.new(
   longitude:  -0.5676490143303429,
   latitude: 44.85768164998401, 
-  user: marie
+  user: julian
 )
 if checkpoint14.save
   print('.')
@@ -323,7 +324,7 @@ end
 checkpoint15 = Checkpoint.new(
   longitude:  -0.5659799990266258,
   latitude: 44.858853982402636, 
-  user: marie
+  user: julian
 )
 if checkpoint15.save
   print('.')
@@ -334,7 +335,7 @@ end
 checkpoint16 = Checkpoint.new(
   longitude:  -0.5691383884174347,
   latitude: 44.86447139010389, 
-  user: sophie
+  user: violaine
 )
 if checkpoint16.save
   print('.')
@@ -345,7 +346,7 @@ end
 checkpoint17 = Checkpoint.new(
   longitude:  -0.5664259360895968,
   latitude: 44.86377059506184, 
-  user: sophie
+  user: violaine
 )
 if checkpoint17.save
   print('.')
@@ -356,7 +357,7 @@ end
 checkpoint18 = Checkpoint.new(
   longitude:  -0.5671769545966258,
   latitude: 44.86240938257408, 
-  user: sophie
+  user: violaine
 )
 if checkpoint18.save
   print('.')
@@ -367,7 +368,7 @@ end
 checkpoint19 = Checkpoint.new(
   longitude:  -0.5679172442794399,
   latitude: 44.86122304822778, 
-  user: sophie
+  user: violaine
 )
 if checkpoint19.save
   print('.')
@@ -378,7 +379,7 @@ end
 checkpoint20 = Checkpoint.new(
   longitude:  -0.5687487290587449,
   latitude: 44.85985417053263, 
-  user: sophie
+  user: violaine
 )
 if checkpoint20.save
   print('.')
@@ -389,7 +390,7 @@ end
 checkpoint21 = Checkpoint.new(
   longitude:  -0.5668604539212165,
   latitude: 44.85836738039367, 
-  user: sophie
+  user: violaine
 )
 if checkpoint21.save
   print('.')
@@ -400,7 +401,7 @@ end
 checkpoint22 = Checkpoint.new(
   longitude:  -0.5659799990266258,
   latitude: 44.858853982402636, 
-  user: sophie
+  user: violaine
 )
 if checkpoint22.save
   print('.')
