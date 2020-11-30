@@ -1,6 +1,6 @@
 .box {
   width: 300px;
-  border-radius: 5px;
+  border-radius: 15px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -12,4 +12,9 @@
 
 #loginform {
   width: 300px;
+}
+
+.img {
+  border-radius: 15px 15px 0 0;
+  object-fit: cover;
 }
