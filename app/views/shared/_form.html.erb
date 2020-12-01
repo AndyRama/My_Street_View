@@ -3,7 +3,6 @@
   <%= simple_form_for @project do |f| %>
   <%= f.input :description, as: :text %>
   <%= f.input :title, label: "Titre" %>
-  <%#= f.input :address, as: :text id ="address"%>
   <%= f.input :longitude, as: :float %>
   <%= f.input :latitude, as: :float %>
   <%= f.input :progress, as: :integer %> 
@@ -12,4 +11,3 @@
   <%= f.button :submit, "Créer le projet", class: "btn-blue" %>
  <% end %>
 </div>
-
