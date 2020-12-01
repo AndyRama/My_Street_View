@@ -1,24 +1,29 @@
 <%= render 'shared/navbar' %>
-<div class="index-container">
-  <div class="all-projects" style="text-align: -webkit-center;">
-    <% @projects.each do |project| %>
-      <div class="card" style="width: 18rem; margin-bottom: 15px; margin-top: 10px;">
-        <%= link_to project_path(project.id) do %>
-          <div class="card-image-top">
-            <%= cl_image_tag project.photo.key, class: "image-card", width: 286, height: 180 %>
-          </div>
-        <% end %>
-        <div class="card-body">
+<div class="background">
+  <div class="indexadmin" style="text-align: center; padding: 15px;">
+    <h3>Liste des projets</h3>
+  </div>
+  <div class="index-container">
+    <div class="all-projects" style="text-align: -webkit-center;">
+      <% @projects.each do |project| %>
+        <div class="card" style="width: 18rem; margin-bottom: 15px; margin-top: 10px;">
           <%= link_to project_path(project.id) do %>
-            <h5 class="card-title" style="text-decoration: none"><%= project.title %></h5>
-            <p class="card-text" style="text-decoration: none"><%= project.description %></p>
+            <div class="card-image-top">
+              <%= cl_image_tag project.photo.key, class: "image-card", width: 286, height: 180 %>
+            </div>
           <% end %>
+          <div class="card-body">
+            <%= link_to project_path(project.id) do %>
+              <h5 class="card-title" style="text-decoration: none"><%= project.title %></h5>
+              <p class="card-text" style="text-decoration: none"><%= project.description %></p>
+            <% end %>
+          </div>
+          <div class="card-footer" style="display: flex;justify-content: space-evenly;">
+            <%= link_to "Modifier", edit_project_path(project), class: "text-warning" %>
+            <%= link_to "Supprimer", project, method: "delete", class: "text-danger", data: {confirm: "Supprimer ce projet ?"} %>
+          </div>
         </div>
-        <div class="card-footer" style="display: flex;justify-content: space-evenly;">
-          <%= link_to "Modifier", edit_project_path(project), class: "text-warning" %>
-          <%= link_to "Supprimer", project, method: "delete", class: "text-danger", data: {confirm: "Supprimer ce projet ?"} %>
-        </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
