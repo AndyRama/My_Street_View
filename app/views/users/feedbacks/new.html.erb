@@ -1,17 +1,9 @@
 <div class="background">
   <div class="box shadow-lg p-3 mb-5 rounded">
     <div class="container">
-<<<<<<< HEAD
-        <h3><%= @question.title %></h3>
-
-        <%= simple_form_for [:users, @question, @feedback] do |f| %>
-        <%= f.error_notification %>
-        
-=======
       <h3><%= @question.title %></h3>
       <%= simple_form_for [:users, @question, @feedback] do |f| %>
         <%= f.error_notification %>
->>>>>>> 8d3387d7c2a61acc3ac7ff2e6ecec5c9293f10bd
         <div class="form-inputs">
           <%= f.input :answer, label: 'Fais un choix', as: :radio_buttons, collection: [
             @question.first_answer, @question.second_answer] %>
