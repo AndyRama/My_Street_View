@@ -1,15 +1,20 @@
 .box {
-  width: auto;
-  background-color: white;
-  border-radius: 5px;
+  width: 300px;
+  border-radius: 15px;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   text-align: -webkit-center;
-  opacity: 0.8;
+  background: rgb(255, 255, 255); // Fallback for older browsers without RGBA-support
+  background: rgba(255, 255, 255, 1);
 }
 
 #loginform {
   width: 300px;
+}
+
+.img {
+  border-radius: 15px 15px 0 0;
+  object-fit: cover;
 }

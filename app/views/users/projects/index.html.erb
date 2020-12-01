@@ -1,19 +1,31 @@
-<div class="container">
-  <div class="all-projects" style="text-align: -webkit-center;">
-    <% @projects.each do |project| %>
-      <div class="card" style="width: 18rem; margin-bottom: 15px; margin-top: 10px;">
-        <%= link_to users_project_path(project.id) do %>
-          <div class="card-image-top">
-            <%= cl_image_tag project.photo.key, class: "image-card", width: 286, height: 180 %>
-          </div>
-        <% end %>
-        <div class="card-body">
-          <%= link_to users_project_path(project.id) do %>
-            <h5 class="card-title" style="text-decoration: none"><%= project.title %></h5>
-            <p class="card-text" style="text-decoration: none"><%= project.description %></p>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
+<div class="navbar navbar-expand-sm navbar-light navbar-user">
+  <a class="navbar-brand" href="/"><img src="<%= asset_path 'logo_transparent.png'%>" alt="logo">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <%# <span class="navbar-toggler-icon"></span> %>
+    <%= image_tag "https://res.cloudinary.com/dbtnehfrf/image/upload/v1606737304/my%20city%20views/photo_profil_fnhuzk.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+          <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+      </li>
+    </ul>
   </div>
 </div>
+
+
+<div id="user" class="d-none" data-user='<%= @user %>'></div>
+<div id="all-projects">
+  <% @projects.each do |project| %>
+    <div class="card d-none" data-lon="<%= project.longitude %>" data-lat="<%= project.latitude %>" data-progress="<%= project.progress %>" style="width: 18rem; margin-bottom: 15px; margin-top: 10px;">
+      <div class="card-body">
+        <%= link_to users_project_path(project.id) do %>
+          <h5 class="card-title" style="text-decoration: none"><%= project.title %></h5>
+          <p class="card-text" style="text-decoration: none"><%= project.description %></p>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<%= render 'shared/map' %>

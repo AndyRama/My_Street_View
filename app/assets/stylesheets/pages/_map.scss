@@ -1,0 +1,27 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.map {
+  width: 100vw;
+  height: 100vh;
+}
+
+#map {
+  width: 100vw;
+  height: 100vh;
+}
+
+.info-box {
+  width: 150px;
+  height: 100px;
+  top: 75px;
+  left: 10px;
+  background-color: rgba(255, 255, 255, .9);
+  padding: 15px;
+  text-align: left;
+  font-family: 'Arial';
+  margin: 0;
+  font-size: 13px;
+}

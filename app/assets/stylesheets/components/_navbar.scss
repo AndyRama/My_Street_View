@@ -1,0 +1,31 @@
+.navbar-lewagon {
+  justify-content: space-between;
+  background: white;
+}
+
+.navbar-lewagon .navbar-collapse {
+  flex-grow: 0;
+}
+
+.navbar-lewagon .navbar-brand img {
+  width: 40px;
+}
+
+// navbar user
+
+.navbar-user {
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 1);
+  z-index: 1000;
+  position: absolute;
+  width: 100vw;
+}
+
+.navbar-user .navbar-collapse {
+  flex-grow: 0;
+}
+
+.navbar-user .navbar-brand img {
+  width: 40px;
+}
+
