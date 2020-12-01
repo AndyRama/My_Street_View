@@ -18,7 +18,6 @@ class QuestionsController < ApplicationController
     @question.project = @project
     if @question.save
       redirect_to project_path(@project)
-      #redirect_to new_users_question_feedback
     else
      render new
     end
