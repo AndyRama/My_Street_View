@@ -7,4 +7,8 @@ class ApplicationController < ActionController::Base
   def currentuser
     @user = current_user.id if current_user
   end
+
+  def default_url_options
+    { host: ENV["DOMAIN"] || "localhost:3000" }
+  end
 end
