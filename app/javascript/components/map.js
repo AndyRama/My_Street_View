@@ -5,6 +5,7 @@ import * as d3 from "d3";
 const token = 'pk.eyJ1IjoianVsaWFubGYiLCJhIjoiY2tndzl6aXhqMDAxazMwb3NoeTNtNjN2biJ9.rKcfejZ9GeY9RhR-li-d4w';
 const options = { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 };
 const origin = window.document.location.origin
+const markers = [];
 const user = document.querySelector('#user')
 const color = ['#279AF1', '#E87310', '#03CEA4'];
 const mode = document.querySelector('#map-mode');
@@ -16,17 +17,36 @@ let map;
 // Latitude = HORIZONTALE
 // position = [longitude, latitude]
 
+const distance = (lon1, lat1, lon2, lat2) => {
+  if ((lat1 == lat2) && (lon1 == lon2)) {
+    return 0;
+  } else {
+    const radlat1 = Math.PI * lat1 / 180;
+    const radlat2 = Math.PI * lat2 / 180;
+    const theta = lon1 - lon2;
+    const radtheta = Math.PI * theta / 180;
+    let dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+    if (dist > 1) {
+      dist = 1;
+    }
+    dist = Math.acos(dist);
+    dist = dist * 180 / Math.PI;
+    dist = dist * 60 * 1.1515;
+    return (dist * 1.609344 * 1000)
+  }
+}
 
 const addPoint = (coord, descr, progress) => {
   const popup = new mapboxgl.Popup({ offset: 25 })
     .setHTML(descr);
-  new mapboxgl.Marker({ color: color[progress] })
+  return new mapboxgl.Marker({ color: color[progress] })
     .setLngLat(coord)
     .setPopup(popup)
     .addTo(map);
 };
 
 const generateFakeMove = () => {
+  markers.forEach((marker) => { marker.remove() });
   d3.json(
     `${origin}/api/v1/checkpoints`).then((checkpoints) => {
     let data = { type: "FeatureCollection", features: [{ type: "Feature", geometry: { type: "LineString", coordinates: checkpoints } }] }
@@ -53,6 +73,11 @@ const generateFakeMove = () => {
         );
         map.getSource('trace').setData(data);
         map.panTo(coordinates[i]);
+        markers.forEach((marker) => {
+          if (150 > distance(marker._lngLat.lng, marker._lngLat.lat, coordinates[i][0], coordinates[i][1])) {
+            marker.addTo(map);
+          }
+        });
         i += 1;
       } else {
         window.clearInterval(timer);
@@ -126,7 +151,7 @@ const drawProject = () => {
     const progress = parseFloat(project.dataset.progress);
     const position = [lon, lat];
     const descr = project.innerHTML;
-    addPoint(position, descr, (progress - 1));
+    markers.push(addPoint(position, descr, (progress - 1)));
   });
 };
 
