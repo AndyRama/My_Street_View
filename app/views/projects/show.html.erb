@@ -15,8 +15,9 @@
       <p class="descriptionbody"> <%= @project.description %> </p>
     </div>
    <div class="footer">
-      <%= link_to "Modifier", edit_project_path(@project), class: "btn btn-blue" %>
-      <%= link_to "Supprimer", project_path(@project), method: :delete, class: "btn btn-blue", data: {confirm: "Are you sure?"} %>
+      <%= link_to "Ajouter une question", new_project_question_path(@project),class: "btn btn-blue" %>
+      <%= link_to "Modifier le project", edit_project_path(@project), class: "btn btn-blue" %>
+      <%= link_to "Supprimer le project", project_path(@project), method: :delete, class: "btn btn-blue", data: {confirm: "Are you sure?"} %> 
      <div class="back">
         <%= link_to "Retour", projects_path %>
       </div>
