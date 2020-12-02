@@ -11,7 +11,6 @@
           <%= cl_image_tag @project.photo.key, width: 500 %>
         </div>
     </div>
-<<<<<<< HEAD
     <div class="col-xs-6 col-md-6">
       <div class="details">
         <h1><%= @project.title %></h1>
@@ -52,18 +51,6 @@
           </div>
           <% end %>
         </div>
-=======
-    <div class="description">
-      <h5>Description</h5>
-      <p class="descriptionbody"> <%= @project.description %> </p>
-    </div>
-   <div class="footer">
-      <%= link_to "Ajouter une question", new_project_question_path(@project),class: "btn btn-blue" %>
-      <%= link_to "Modifier les questions", edit_question_path(@project), class: "btn btn-blue" %>
-      <%= link_to "Supprimer le project", project_path(@project), method: :delete, class: "btn btn-blue", data: {confirm: "Are you sure?"} %> 
-     <div class="back">
-        <%= link_to "Retour", projects_path %>
->>>>>>> 68684e27ff094ad2a7d04e2d3b7f7322ed1d88c2
       </div>
     </div>
   </div>
