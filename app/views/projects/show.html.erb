@@ -4,23 +4,55 @@
 
 
 <%= render 'shared/navbar' %>
-<div class="background">
-  <div class="box">
-    <div class="image-title">
-      <%= cl_image_tag @project.photo.key, height: 180, width: 286 %>
-      <h1 class="title"> <%= @project.title %> </h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 col-md-6">
+        <div class="thumbnail-container">
+          <%= cl_image_tag @project.photo.key, width: 500 %>
+        </div>
     </div>
-    <div class="description">
-      <h5>Description</h5>
-      <p class="descriptionbody"> <%= @project.description %> </p>
-    </div>
-   <div class="footer">
-      <%= link_to "Ajouter une question", new_project_question_path(@project),class: "btn btn-blue" %>
-      <%= link_to "Modifier le project", edit_project_path(@project), class: "btn btn-blue" %>
-      <%= link_to "Supprimer le project", project_path(@project), method: :delete, class: "btn btn-blue", data: {confirm: "Are you sure?"} %> 
-     <div class="back">
-        <%= link_to "Retour", projects_path %>
+    <div class="col-xs-6 col-md-6">
+      <div class="details">
+        <h1><%= @project.title %></h1>
+        <p class="description"><%= @project.description %></p>
+        <div class="boutons">
+          <div class="column" id="wishlist-container">
+            <button class="question-button">
+              <span class="icon is-small">
+                  <i class="fas fa-plus"></i>
+                </span>
+                <a style="text: white; text-decoration: none;" href="<%= new_project_question_path(@project) %>"><span>QUESTION</span></a>
+            </button>
+            <button class="modif-button">
+              <span class="icon is-small">
+                  <i class="far fa-edit"></i>
+                </span>
+                <a href="<%= edit_project_path(@project) %>"><span>MODIFIER</span></a>
+            </button>
+          </div>
+          <div class="column" id="buy-container">
+            <button class="button delete-button">
+              <span class="icon is-small">
+                  <i class="far fa-trash-alt"></i>
+                </span>
+                <span>SUPPRIMER</span>
+            </button>
+          </div>
+        </div>
+        <div class="questions border">
+          <% @questions.each_with_index do |question, index| %>
+          <h4>Question <%= index + 1 %></h4>
+          <%= question.title %>
+          <div>
+            <p>> <%= question.first_answer %></p>
+          </div>
+          <div>
+            <p>> <%= question.second_answer %></p>
+          </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
