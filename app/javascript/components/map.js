@@ -197,8 +197,8 @@ const addUserToMap = (center) => {
   el.className = 'marker';
   el.style.backgroundImage = 'url(https://image.flaticon.com/icons/png/512/23/23398.png)';
   el.style.backgroundSize = 'cover';
-  el.style.width = '60px';
-  el.style.height = '60px';
+  el.style.width = '25px';
+  el.style.height = '25px';
   new mapboxgl.Marker(el)
     .setLngLat(center)
     .addTo(map);
