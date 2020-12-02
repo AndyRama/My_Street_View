@@ -49,6 +49,7 @@
           <div>
             <p>> <%= question.second_answer %></p>
           </div>
+          <%= link_to "Supprimer", question, method: "delete", class: "text-danger", data: {confirm: "Supprimer cette question ?"} %>
           <% end %>
         </div>
       </div>
