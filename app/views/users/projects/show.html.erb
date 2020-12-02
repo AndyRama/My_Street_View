@@ -7,7 +7,6 @@
     <br>
     <div class="container">
       <div class="description">
-        <h5 style="font-weight: bold;">Description</h5>
         <p class="descriptionbody" style="margin-left: 5px; margin-right: 5px;"> <%= @project.description %> </p>
       </div>
       <hr>
@@ -17,7 +16,6 @@
             <div style="margin-bottom: 10px;">
               <%= question.title %>
             </div>
-            <hr>
             <% if @user.feedbacks.where(question_id: question) != [] %>
               <div class="text-success" style="outline-style: auto;">
                 <p>Vous avez répondu a cette question</p>
@@ -26,6 +24,7 @@
               <%= link_to "Donnez votre avis", new_users_question_feedback_path(question), class: "btn btn-blue" %>
             <% end %>
           <% end %>
+          <hr>
         <% end %>
         <div class="back" style="font-weight: bold; margin-bottom: 15px;">
           <%= link_to "Retour", users_projects_path %>
