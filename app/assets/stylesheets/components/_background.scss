@@ -21,5 +21,15 @@
 
 .modal-body {
 height: auto;
-border-radius: 15px;
+background: transparent;
+}
+
+.modal-dialog {
+  height: auto;
+  background: transparent;
+  }
+  
+.modal-content {
+  background: transparent;
+  border: none;
 }
