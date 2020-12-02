@@ -21,22 +21,24 @@
               <span class="icon is-small">
                   <i class="fas fa-plus"></i>
                 </span>
-                <a style="text: white; text-decoration: none;" href="<%= new_project_question_path(@project) %>"><span>QUESTION</span></a>
+                <a style="text-decoration: none;" href="<%= new_project_question_path(@project) %>"><span>AJOUTER UNE QUESTION</span></a>
             </button>
             <button class="modif-button">
               <span class="icon is-small">
                   <i class="far fa-edit"></i>
                 </span>
-                <a href="<%= edit_project_path(@project) %>"><span>MODIFIER</span></a>
+                <a style="text-decoration: none;" href="<%= edit_project_path(@project) %>"><span>MODIFIER</span></a>
             </button>
           </div>
           <div class="column" id="buy-container">
-            <button class="button delete-button">
-              <span class="icon is-small">
+            <%= link_to @project, method: "delete", class: "text-danger", data: {confirm: "Supprimer ce projet ?"} do %>
+              <button class="button delete-button">
+                <span class="icon is-small">
                   <i class="far fa-trash-alt"></i>
                 </span>
                 <span>SUPPRIMER</span>
-            </button>
+              </button>
+            <% end %>
           </div>
         </div>
         <div class="questions border">

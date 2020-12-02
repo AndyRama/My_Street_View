@@ -44,6 +44,11 @@
   width: 100%;
   border-radius: 0px;
   border: 1px;
+  color: white;
+}
+
+span {
+  color: white;
 }
 
 .boutons{
@@ -89,6 +94,11 @@ display: flex;
   border: none;
 }
 
+.modif-button:hover, .modif-button:active, .modif-button:focus {
+  color: white;
+  opacity: 0.9;
+}
+
 .question-button{
   background: #3A7CA5;
   color: white;
@@ -96,6 +106,11 @@ display: flex;
   a {
     text-decoration: none;
   }
+}
+
+.question-button:hover, .question-button:active, .question-button:focus {
+  color: white;
+  opacity: 0.9;
 }
 
 .delete-button:hover, .delete-button:active, .delete-button:focus {
