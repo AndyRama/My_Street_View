@@ -1,0 +1,112 @@
+.details h1 {
+  font-size: 28px;
+  margin-bottom: 5px;
+  font-weight: 700;
+}
+
+.wrapper {
+  margin: 0 auto;
+  width: 860px;
+}
+
+.columns {
+  margin: 0 auto;
+  max-width: 900px;
+}
+
+.details {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  float: left;
+}
+
+.thumbnail-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  float: left;
+  image {
+    width: inherit;
+  }
+}
+
+.wishlist-container {
+  padding-left: 0;
+}
+
+
+.columns {
+  margin-top: 30px;
+}
+
+.button {
+  width: 100%;
+  border-radius: 0px;
+  border: 1px;
+}
+
+.boutons{
+display: flex;
+}
+
+.select, select {
+  width: 100%;
+  border-radius: 0 !important;
+}
+
+#wishlist-container {
+  padding-left: 0;
+}
+
+#buy-container {
+  padding-right: 0;
+}
+
+.small-text {
+  font-size: 14px;
+}
+
+.small-text span {
+  font-weight: bold;
+}
+
+.questions {
+  margin-top: 10px;
+  // border: solid 1px;
+  padding: 5px;
+}
+
+.delete-button {
+  background: #ff6900;
+  color: white;
+  border: none;
+}
+
+.modif-button{
+  background: #86BA90;
+  color: white;
+  border: none;
+}
+
+.question-button{
+  background: #3A7CA5;
+  color: white;
+  border: none;
+  a {
+    text-decoration: none;
+  }
+}
+
+.delete-button:hover, .delete-button:active, .delete-button:focus {
+  color: white;
+  opacity: 0.9;
+}
+
+
+@media only screen and (max-width: 769px) {
+
+  #wishlist-container, #buy-container {
+    padding: 0 0 15px 0;
+  }
+}
