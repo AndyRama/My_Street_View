@@ -1,6 +1,6 @@
-<% content_for :meta_title, "#{@project.name} is on #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_title, "#{@project.title} is on #{DEFAULT_META["meta_product_title"]}" %>
 <% content_for :meta_description, @project.description %>
-<% content_for :meta_image, cl_image_path(@project.photo.path) %>
+<% content_for :meta_image, cl_image_path(@project.photo.key) %>
 
 
 <%= render 'shared/navbar' %>
@@ -15,10 +15,11 @@
       <p class="descriptionbody"> <%= @project.description %> </p>
     </div>
    <div class="footer">
-      <%= link_to "Modifier", edit_project_path(@project), class: "btn btn-blue" %>
-      <%= link_to "Supprimer", project_path(@project), method: :delete, class: "btn btn-blue", data: {confirm: "Are you sure?"} %> 
+      <%= link_to "Ajouter une question", new_project_question_path(@project),class: "btn btn-blue" %>
+      <%= link_to "Modifier le project", edit_project_path(@project), class: "btn btn-blue" %>
+      <%= link_to "Supprimer le project", project_path(@project), method: :delete, class: "btn btn-blue", data: {confirm: "Are you sure?"} %> 
      <div class="back">
-        <%= link_to "Retour", projects_path %> 
+        <%= link_to "Retour", projects_path %>
       </div>
     </div>
   </div>
