@@ -7,6 +7,7 @@ const options = { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 };
 const origin = window.document.location.origin
 const markers = [];
 const user = document.querySelector('#user')
+const homepage = document.querySelector('#map')
 const color = ['#279AF1', '#E87310', '#03CEA4'];
 const mode = document.querySelector('#map-mode');
 // [bleu, orange, vert]
@@ -16,6 +17,21 @@ let map;
 // Longitude = VERTICALE
 // Latitude = HORIZONTALE
 // position = [longitude, latitude]
+
+document.addEventListener('click', (event) => {
+  if (event.target.parentNode.matches('a') && event.target.parentNode.classList.contains('project-show')) {
+    event.preventDefault();
+    const url = event.target.parentNode.href;
+    fetch(url).then(function(response) {
+      return response.text()
+    }).then(function(text) {
+      text = text.replace(/.*<body>/s, '');
+      text = text.replace(/<\/body>.*/s, '');
+      document.querySelector('.modal-body').innerHTML = text;
+      document.querySelector('#buttonModal').click();
+    });
+  }
+});
 
 const distance = (lon1, lat1, lon2, lat2) => {
   if ((lat1 == lat2) && (lon1 == lon2)) {
@@ -113,34 +129,31 @@ const trackUser = (pos) => {
   });
 };
 
-
 const generateMove = (center, nbr) => {
-  map.on('load', function() {
-    const data = { type: "FeatureCollection", features: [{ type: "Feature", geometry: { type: "LineString", coordinates: [center] } }] }
-    map.addSource('trace', { type: 'geojson', data: data });
-    map.addLayer({
-      'id': 'trace',
-      'type': 'line',
-      'source': 'trace',
-      'paint': {
-        'line-color': '#669df6',
-        'line-opacity': 0.75,
-        'line-width': 5
-      }
-    });
-    map.jumpTo({ 'center': center, 'zoom': 13 });
-    map.setPitch(30);
-    let i = 0;
-    const timer = window.setInterval(function() {
-      if (i < nbr) {
-        navigator.geolocation.getCurrentPosition(trackUser, error, options);
-        i += 1;
-      } else {
-        console.log('Stop tracking');
-        window.clearInterval(timer);
-      }
-    }, 60000);
+  const data = { type: "FeatureCollection", features: [{ type: "Feature", geometry: { type: "LineString", coordinates: [center] } }] }
+  map.addSource('trace', { type: 'geojson', data: data });
+  map.addLayer({
+    'id': 'trace',
+    'type': 'line',
+    'source': 'trace',
+    'paint': {
+      'line-color': '#669df6',
+      'line-opacity': 0.75,
+      'line-width': 5
+    }
   });
+  map.jumpTo({ 'center': center, 'zoom': 13 });
+  map.setPitch(30);
+  let i = 0;
+  const timer = window.setInterval(function() {
+    if (i < nbr) {
+      navigator.geolocation.getCurrentPosition(trackUser, error, options);
+      i += 1;
+    } else {
+      console.log('Stop tracking');
+      window.clearInterval(timer);
+    }
+  }, 60000);
 };
 
 const drawProject = () => {
@@ -171,7 +184,7 @@ const initMode = (center) => {
   lancer.onclick = function(event) {
     if (mode.checked) {
       console.log('Tracing');
-      generateMove(center, nbr.value); // Tracking
+      generateMove(center, parseInt(nbr.value)); // Tracking
     } else {
       console.log('Simulation');
       generateFakeMove(); // Simulate
@@ -180,22 +193,24 @@ const initMode = (center) => {
 };
 
 const initMap = (center) => {
-  mapboxgl.accessToken = token;
-  map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v9',
-    center: center, // starting position
-    zoom: 12
-  });
-  drawProject();
-  map.on('load', function() {
-    if (mode.parentNode.parentNode.classList.contains('d-none')) {
-      console.log('Simulation');
-      generateFakeMove(); // Simulate
-    } else {
-      initMode(center);
-    }
-  });
+  if (homepage) {
+    mapboxgl.accessToken = token;
+    map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v9',
+      center: center, // starting position
+      zoom: 12
+    });
+    drawProject();
+    map.on('load', function() {
+      if (mode.parentNode.parentNode.classList.contains('d-none')) {
+        console.log('Simulation');
+        generateFakeMove(); // Simulate
+      } else {
+        initMode(center);
+      }
+    });
+  }
 };
 
 const init = (pos) => {
@@ -217,3 +232,4 @@ const initMapWithUser = () => {
 };
 
 export { initMapWithUser };
+// export { initMap };

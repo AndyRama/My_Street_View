@@ -10,7 +10,7 @@ class Users::FeedbacksController < ApplicationController
     @feedback.user = current_user
     @feedback.question = @question
     if @feedback.save
-      redirect_to users_project_path(@question.project)
+      redirect_to users_projects_path
     else
       render :new
     end
