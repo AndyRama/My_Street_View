@@ -6,13 +6,17 @@ class QuestionsController < ApplicationController
   def show
   end
 
+  def update
+    @question = Question.find(params[:id])
+    if @question.update(questions_params)
+      redirect_to projects_path(@project)
+    else
+      render :edit
+    end
+  end
+
   def edit
-    # @project = Project.find(params[:id])
-    # if @project.save
-    #   redirect_to projects_path(@project)
-    # else
-    #   redirect_to edit_question_path(@project)
-    # end
+    @question = Question.find(params[:id])
   end
 
   def new
