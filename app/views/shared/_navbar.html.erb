@@ -16,7 +16,11 @@
       </li>
       <% end %>
       <li class="nav-item dropdown">
+      <% if current_user.admin == true %>
+        <%= image_tag "https://res.cloudinary.com/dbtnehfrf/image/upload/v1606923736/220px-Patrick_Stewart_by_Gage_Skidmore_2_cxqnny.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <% else %>
         <%= image_tag "https://res.cloudinary.com/dbtnehfrf/image/upload/v1606737304/my%20city%20views/photo_profil_fnhuzk.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <% end %>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <%= link_to "Action", "#", class: "dropdown-item" %>
           <div class="dropdown-divider"></div>
