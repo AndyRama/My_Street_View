@@ -28,8 +28,11 @@ import "bootstrap";
 
 // Internal imports, e.g:
 import { initMapWithUser } from '../components/map';
+// import { initMap } from '../components/map';
 
 
 document.addEventListener('turbolinks:load', () => {
   initMapWithUser()
+    // initMap([-0.5659754120653856, 44.85959815077221]);
+
 });
