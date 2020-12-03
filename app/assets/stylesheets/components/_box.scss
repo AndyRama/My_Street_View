@@ -6,8 +6,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: -webkit-center;
-  background: rgb(255, 255, 255); // Fallback for older browsers without RGBA-support
-  background: rgba(255, 255, 255, 1);
+  background: rgb(255, 255, 255);
   padding-bottom: 10px;
 }
 
