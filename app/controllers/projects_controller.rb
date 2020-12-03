@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @questions = @project.questions
+    @feedbacks = Feedback.all
   end
 
   def new
@@ -28,12 +29,12 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
     if @project.update(project_params)
-       redirect_to projects_path(@project)
+      redirect_to project_path(@project)
     else
-       render :new
+      render :new
     end
   end
- 
+
   def destroy
     @project = Project.find(params[:id])
     @project.destroy

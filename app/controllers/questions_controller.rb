@@ -9,7 +9,7 @@ class QuestionsController < ApplicationController
   def update
     @question = Question.find(params[:id])
     if @question.update(question_params)
-      redirect_to projects_path(@project)
+      redirect_to project_path(@project)
     else
       render :edit
     end
@@ -38,12 +38,12 @@ class QuestionsController < ApplicationController
   def destroy
     @question = Question.find(params[:id])
     @question.destroy
-    redirect_to projects_path(@project)
+    redirect_to projects_path
   end
 
   private
 
   def question_params
-    params.require(:question).permit(:title, :first_answer, :second_answer,:photo, :project_id)
+    params.require(:question).permit(:title, :first_answer, :second_answer, :photo, :project_id)
   end
 end
