@@ -1,6 +1,12 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to "/", class: "navbar-brand" do %>
-    <%= image_tag asset_path("logo_transparent.png") %>
+  <% if current_user.admin == true %>
+    <%= link_to "/", class: "navbar-brand" do %>
+      <%= image_tag asset_path("logo_transparent.png") %>
+    <% end %>
+  <% else %>
+    <%= link_to "/users/projects", class: "navbar-brand" do %>
+      <%= image_tag asset_path("logo_transparent.png") %>
+    <% end %>
   <% end %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -8,13 +14,14 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <%= link_to "Home", "/", class: "nav-link" %>
       </li>
-      <% if current_user.admin == true %>
-        <li class="nav-item active">
-          <%= link_to "Créer un projet", new_project_path, class: "nav-link text-success" %>
-        </li>
-      <% end %>
+      <li class="nav-item active">
+        <% if current_user.admin == true %>
+          <%= link_to "Home", "/", class: "nav-link" %>
+        <% else %>
+          <%= link_to "Home", "/users/projects", class: "nav-link" %>
+        <% end %>
+      </li>
       <li class="nav-item dropdown">
         <% if current_user.admin == true %>
           <%= image_tag "https://res.cloudinary.com/dbtnehfrf/image/upload/v1606923736/220px-Patrick_Stewart_by_Gage_Skidmore_2_cxqnny.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
