@@ -32,3 +32,8 @@ document.addEventListener('turbolinks:load', () => {
   initMap([-0.5659754120653856, 44.85959815077221]);
 
 });
+
+//autocomplete
+import { initAutocomplete } from '../plugins/init_autocomplete';
+
+initAutocomplete();

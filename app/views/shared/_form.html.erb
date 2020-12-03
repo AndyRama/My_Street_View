@@ -2,7 +2,7 @@
   <%= simple_form_for @project do |f| %>
     <%= f.input :description, as: :text %>
     <%= f.input :title, label: "Titre" %>
-    <%= f.input :address, as: :string %>
+    <%= f.input :address, as: :string, input_html: { id: "project_address" } %>
     <%#= f.input :longitude, as: :float %>
     <%#= f.input :latitude, as: :float %>
     <%= f.input :photo, as: :file, id: 'form-photo' %>
