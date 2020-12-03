@@ -6,7 +6,7 @@ const token = 'pk.eyJ1IjoianVsaWFubGYiLCJhIjoiY2tndzl6aXhqMDAxazMwb3NoeTNtNjN2bi
 const options = { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 };
 const origin = window.document.location.origin
 const markers = [];
-const user = document.querySelector('#user')
+// const user = document.querySelector('#user')
 const homepage = document.querySelector('#map')
 const color = ['#279AF1', '#E87310', '#03CEA4'];
 const mode = document.querySelector('#map-mode');
@@ -192,18 +192,6 @@ const initMode = (center) => {
   }
 };
 
-const addUserToMap = (center) => {
-  const el = document.createElement('div');
-  el.className = 'marker';
-  el.style.backgroundImage = 'url(https://image.flaticon.com/icons/png/512/23/23398.png)';
-  el.style.backgroundSize = 'cover';
-  el.style.width = '25px';
-  el.style.height = '25px';
-  new mapboxgl.Marker(el)
-    .setLngLat(center)
-    .addTo(map);
-}
-
 const initMap = (center) => {
   if (homepage) {
     mapboxgl.accessToken = token;
@@ -214,7 +202,6 @@ const initMap = (center) => {
       zoom: 12
     });
     drawProject();
-    addUserToMap(center);
     map.on('load', function() {
       if (mode.parentNode.parentNode.classList.contains('d-none')) {
         console.log('Simulation');
@@ -226,23 +213,23 @@ const initMap = (center) => {
   }
 };
 
-const init = (pos) => {
-  transformPos(pos).then((position) => {
-    if (position !== []) {
-      initMap(position)
-    }
-  });
-}
+// const init = (pos) => {
+//   transformPos(pos).then((position) => {
+//     if (position !== []) {
+//       initMap(position)
+//     }
+//   });
+// }
 
-const error = (err) => {
-  console.warn(`ERROR(${err.code}): ${err.message}`);
-}
+// const error = (err) => {
+//   console.warn(`ERROR(${err.code}): ${err.message}`);
+// }
 
-const initMapWithUser = () => {
-  if (user && user.dataset.user) {
-    navigator.geolocation.getCurrentPosition(init, error, options);
-  }
-};
+// const initMapWithUser = () => {
+//   if (user && user.dataset.user) {
+//     navigator.geolocation.getCurrentPosition(init, error, options);
+//   }
+// };
 
-export { initMapWithUser };
-// export { initMap };
+// export { initMapWithUser };
+export { initMap };
