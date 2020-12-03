@@ -44,7 +44,6 @@
             <h4>Question <%= index + 1 %></h4>
             <%= question.title %>
             <div>
-<<<<<<< HEAD
               <p style="margin: inherit">> <%= question.first_answer %></p>
               <p>Nombre de votes :<%= question.feedbacks.where(answer: question.first_answer).count %></p>
             </div>
@@ -54,14 +53,6 @@
             </div>
             <%= link_to "Supprimer", question, method: "delete", class: "text-danger", data: {confirm: "Supprimer cette question ?"} %>
             <hr>
-=======
-              <p>> <%= question.first_answer %></p>
-            </div>
-            <div>
-              <p>> <%= question.second_answer %></p>
-            </div>
-            <%= link_to "Supprimer", question, method: "delete", class: "text-danger", data: {confirm: "Supprimer cette question ?"} %>
->>>>>>> f1c357dde208af2cc7c71340d2d9000eca232c71
           <% end %>
         </div>
       </div>
