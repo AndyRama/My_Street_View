@@ -12,10 +12,9 @@
 }
 
 // navbar user
-
 .navbar-user {
   justify-content: space-between;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgb(255, 255, 255);
   z-index: 1000;
   position: absolute;
   width: 100vw;
@@ -28,4 +27,3 @@
 .navbar-user .navbar-brand img {
   width: 40px;
 }
-
