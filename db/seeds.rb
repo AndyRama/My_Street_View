@@ -49,8 +49,7 @@ puts "\n Création de 4 projets"
 projet1 = Project.new(
   title: "Project écologique",
   description: "Aménagement d'un espace vert sur la place dans le cadre d'un project écologique",
-  longitude:  -0.5659754120653856,
-  latitude: 44.85959815077221,
+  address:"107 Cours Balguerie Stuttenberg, 33300 Bordeaux",
   progress: 2
 )
 if projet1.save
@@ -65,8 +64,7 @@ end
 projet2 = Project.new(
   title: "Refaire Chaussée ?",
   description: "Suite à la constatation de nombreux trous présents sur la chaussée",
-  longitude: -0.5703369634805979,
-  latitude: 44.861582981544565,
+  address:"17 rue villeneuve 33000 bordeaux",
   progress: 1
 )
 if projet2.save
@@ -81,8 +79,7 @@ end
 projet3 = Project.new(
   title: "Piste cyclable ?",
   description: "Solicitation suite a de multiple demandes d'amenagement d'une piste cyclable",
-  longitude: -0.5669074204334726,
-  latitude: 44.85846256846444,
+  address:"53 rue giner de los rios 33800 bordeaux",
   progress: 1
 )
 if projet3.save
@@ -97,8 +94,7 @@ end
 projet4 = Project.new(
   title: "Espace vert au chatron ?",
   description: "Amenagement d'un espace vert dans le cadre d'un project écologique",
-  longitude: -0.5648152974891937,
-  latitude: 44.858523409633406,
+  address: " 21 rue des myosotis 33700 merignac",
   progress: 1
 )
 if projet4.save

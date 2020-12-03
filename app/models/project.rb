@@ -11,5 +11,4 @@ class Project < ApplicationRecord
   # validates :latitude, presence: true
   validates :progress, presence: true
   validates :address, presence: true
-
 end
