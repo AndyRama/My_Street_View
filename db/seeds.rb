@@ -43,7 +43,6 @@ else
   end
 end
 
-
 puts "\n Création de 4 projets"
 
 #wagon bdx
