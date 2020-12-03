@@ -1,9 +1,8 @@
 // btn blue
-
 .btn-blue {
   background-color: $green;
   color: white;
-  border: 1px solid #4A4A4A;
+  border: 1px solid #4a4a4a61;
   padding: 8px 24px;
   border-radius: 50px;
   font-weight: lighter;
@@ -15,4 +14,18 @@
 .btn-blue:hover {
   color: $blue;
   background-color: white;
+}
+
+.btn-grey {
+  color: white;
+  background-color: #808080de;
+  padding: 8px 24px;
+  border-radius: 25px;
+  font-weight: lighter;
+  transition: opacity 0.3s ease;
+}
+
+.btn-grey:hover {
+  color: white;
+  background-color: #808080de;
 }
