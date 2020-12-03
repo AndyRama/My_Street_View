@@ -57,7 +57,11 @@ if projet1.save
   print('.')
 else
   projet1 = Project.where(title: "Project écologique").first
-  print('-')
+  if projet1
+    print('-')
+  else
+    print('X')
+  end
 end
 
 #total
@@ -72,7 +76,11 @@ if projet2.save
   print ('.')
 else
   projet2 = Project.where(title: "Refaire Chaussée ?").first
-  print('-')
+  if projet2
+    print('-')
+  else
+    print('X')
+  end
 end
 
 #brasserie du Medoc
@@ -86,8 +94,11 @@ if projet3.save
   projet3.photo.attach(io: open("https://res.cloudinary.com/dbtnehfrf/image/upload/v1606217205/my%20city%20views/bruno-martins-GkZvxVsHYWw-unsplash_atn7ga.jpg"), filename:'projet3')
   print('.')
 else
-  projet3 = Project.where(title: "Piste cyclable ?").first
-  print('-')
+  if projet3
+    print('-')
+  else
+    print('X')
+  end
 end
 
 #union sportive
@@ -102,7 +113,11 @@ if projet4.save
   print('.')
 else
   projet4 = Project.where(title: "Espace vert aux Chartrons ?").first
-  print('-')
+  if projet4
+    print('-')
+  else
+    print('X')
+  end
 end
 
 puts "\n Création de 4 questions avec deux possibles réponses"
@@ -117,7 +132,11 @@ if question1.save
   print('.')
 else
   question1 = Question.where(title: "Selon vous, de quel coté la piste cyclable doit etre ?")
-  print('-')
+  if question1
+    print('-')
+  else
+    print('X')
+  end
 end
 
 question2 = Question.new(
@@ -130,7 +149,11 @@ if question2.save
   print('.')
 else
   question2 = Question.where(title: "Préférez vous une chaussé en pavés ou en bitume ?")
-  print('-')
+  if question2
+    print('-')
+  else
+    print('X')
+  end
 end
 
 question3 = Question.new(
@@ -143,7 +166,11 @@ if question3.save
   print('.')
 else
   question3 = Question.where(title: "Garder les maronniers place Gambetta ?")
-  print('-')
+  if question3
+    print('-')
+  else
+    print('X')
+  end
 end
 
 question4 = Question.new(
@@ -156,7 +183,11 @@ if question4.save
   print('.')
 else
   question4 = Question.where(title: "Espace vert au Chartrons ?")
-  print('-')
+  if question4
+    print('-')
+  else
+    print('X')
+  end
 end
 
 puts "\n Création de Checkpoints pour simuler un mouvement"
