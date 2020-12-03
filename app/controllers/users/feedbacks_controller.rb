@@ -11,6 +11,7 @@ module Users
       @feedback.user = current_user
       @feedback.question = @question
       if @feedback.save
+        flash[:notice] = "Merci d'avoir repondu !"
         redirect_to users_projects_path
       else
         render :new
