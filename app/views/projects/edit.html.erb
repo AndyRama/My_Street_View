@@ -1,12 +1,2 @@
 <%= render 'shared/navbar' %>
-<div class="container">
-  <%= simple_form_for @project do |f| %>
-    <%= f.input :description, as: :text %>
-    <%= f.input :title, label: "Titre" %>""
-    <%= f.input :longitude, as: :float %>
-    <%= f.input :latitude, as: :float %>
-    <%= f.input :progress, as: :integer %>
-    <%= f.input :photo, as: :file %>
-    <%= f.button :submit, "Valider", class: "btn-blue" %>
-  <% end %>
-</div>
+<%= render 'shared/form', project: @project %>
