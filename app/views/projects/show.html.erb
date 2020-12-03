@@ -5,13 +5,13 @@
 
 <%= render 'shared/navbar' %>
 <div class="container">
-  <div class="row">
-    <div class="col-xs-6 col-md-6">
+  <div class="row" style="margin-top: 25px">
+    <div class="col-xs-4 col-md-6">
         <div class="thumbnail-container">
-          <%= cl_image_tag @project.photo.key, width: 500 %>
+          <%= cl_image_tag @project.photo.key, width: 400 %>
         </div>
     </div>
-    <div class="col-xs-6 col-md-6">
+    <div class="col-xs-8 col-md-6">
       <div class="details">
         <h1><%= @project.title %></h1>
         <p class="description"><%= @project.description %></p>
@@ -43,15 +43,18 @@
         </div>
         <div class="questions border">
           <% @questions.each_with_index do |question, index| %>
-          <h4>Question <%= index + 1 %></h4>
-          <%= question.title %>
-          <div>
-            <p>> <%= question.first_answer %></p>
-          </div>
-          <div>
-            <p>> <%= question.second_answer %></p>
-          </div>
-          <%= link_to "Supprimer", question, method: "delete", class: "text-danger", data: {confirm: "Supprimer cette question ?"} %>
+            <h4>Question <%= index + 1 %></h4>
+            <%= question.title %>
+            <div>
+              <p style="margin: inherit">> <%= question.first_answer %></p>
+              <p>Nombre de votes :<%= question.feedbacks.where(answer: question.first_answer).count %></p>
+            </div>
+            <div>
+              <p style="margin: inherit">> <%= question.second_answer %></p>
+              <p>Nombre de votes :<%= question.feedbacks.where(answer: question.second_answer).count %></p>
+            </div>
+            <%= link_to "Supprimer", question, method: "delete", class: "text-danger", data: {confirm: "Supprimer cette question ?"} %>
+            <hr>
           <% end %>
         </div>
       </div>
