@@ -37,8 +37,9 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question = Question.find(params[:id])
+    @project = @question.project
     @question.destroy
-    redirect_to projects_path
+    redirect_to project_path(@project)
   end
 
   private

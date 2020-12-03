@@ -4,60 +4,54 @@
 <div class="background">
   <%= render 'shared/navbar' %>
   <div class="container">
-    <div class="row" style="margin-top: 25px">
-      <div class="col-xs-4 col-md-6">
-          <div class="thumbnail-container">
-            <%= cl_image_tag @project.photo.key, width: 400 %>
-          </div>
-      </div>
-      <div class="col-xs-8 col-md-6">
-        <div class="details">
-          <h1><%= @project.title %></h1>
-          <p class="description"><%= @project.description %></p>
-          <div class="boutons">
-            <div class="column" id="wishlist-container">
-              <button class="question-button">
-                <span class="icon is-small">
-                  <i class="fas fa-plus"></i>
-                </span>
-                <a style="text-decoration: none;" href="<%= new_project_question_path(@project) %>"><span>AJOUTER UNE QUESTION</span></a>
+    <div class="card-product">
+      <%= cl_image_tag @project.photo.key, width: 400 %>
+      <div class="card-product-infos" style="height: -webkit-fill-available; width: -webkit-fill-available;">
+        <h1 style="font-size: 25px; text-align: center;"><%= @project.title %></h1>
+        <h3 style="font-size: 20px;">Description</h3>
+        <p class="description" style="margin-bottom: 30px; font-size: 14px;"><%= @project.description %></p>
+        <div class="boutons" style="display: flex; justify-content: center;">
+          <div class="column d-flex" id="wishlist-container">
+            <button class="btn btn-blue" style="border-radius: 25px 0px 0px 25px;">
+              <i class="fas fa-plus"></i>
+              <a style="text-decoration: none;" href="<%= new_project_question_path(@project) %>"><span>AJOUTER UNE QUESTION</span></a>
+            </button>
+            <button class="btn btn-blue" style="border-radius: 0;">
+              <i class="far fa-edit"></i>
+              <a style="text-decoration: none;" href="<%= edit_project_path(@project) %>"><span>MODIFIER</span></a>
+            </button>
+            <%= link_to @project, method: "delete", class: "text-danger", data: {confirm: "Supprimer ce projet ?"} do %>
+              <button class="btn btn-blue" style="border-radius: 0px 25px 25px 0px;">
+                <i class="far fa-trash-alt"></i>
+                <span>SUPPRIMER</span>
               </button>
-              <button class="modif-button">
-                <span class="icon is-small">
-                  <i class="far fa-edit"></i>
-                </span>
-                <a style="text-decoration: none;" href="<%= edit_project_path(@project) %>"><span>MODIFIER</span></a>
-              </button>
-            </div>
-            <div class="column" id="buy-container">
-              <%= link_to @project, method: "delete", class: "text-danger", data: {confirm: "Supprimer ce projet ?"} do %>
-                <button class="button delete-button">
-                  <span class="icon is-small">
-                    <i class="far fa-trash-alt"></i>
-                  </span>
-                  <span>SUPPRIMER</span>
-                </button>
-              <% end %>
-            </div>
-          </div>
-          <div class="questions border">
-            <% @questions.each_with_index do |question, index| %>
-              <h4>Question <%= index + 1 %></h4>
-              <%= question.title %>
-              <div>
-                <p style="margin: inherit">> <%= question.first_answer %></p>
-                <p>Nombre de votes :<%= question.feedbacks.where(answer: question.first_answer).count %></p>
-              </div>
-              <div>
-                <p style="margin: inherit">> <%= question.second_answer %></p>
-                <p>Nombre de votes :<%= question.feedbacks.where(answer: question.second_answer).count %></p>
-              </div>
-              <%= link_to "Supprimer", question, method: "delete", class: "text-danger", data: {confirm: "Supprimer cette question ?"} %>
-              <hr>
             <% end %>
           </div>
         </div>
       </div>
+    </div>
+    <div class="all-cards" style="display: grid;justify-items: center;">
+    <% @questions.each_with_index do |question, index| %>
+      <div class="card border-success mb-3" style="width: 288px;margin-top: 30px;">
+        <div class="card-header bg-transparent border-success">
+          <h4 style="text-align: center;">Question <%= index + 1 %></h4>
+        </div>
+        <div class="card-body">
+          <%= question.title %>
+          <div>
+            <p style="margin: inherit">> <%= question.first_answer %></p>
+            <p>Nombre de votes :<%= question.feedbacks.where(answer: question.first_answer).count %></p>
+          </div>
+          <div>
+            <p style="margin: inherit">> <%= question.second_answer %></p>
+            <p>Nombre de votes :<%= question.feedbacks.where(answer: question.second_answer).count %></p>
+          </div>
+        </div>
+        <div class="card-footer bg-transparent border-success" style="text-align: center;">
+          <%= link_to "Supprimer", question, method: "delete", class: "text-danger", data: {confirm: "Supprimer cette question ?"} %>
+        </div>
+      </div>
+    <% end %>
     </div>
   </div>
 </div>

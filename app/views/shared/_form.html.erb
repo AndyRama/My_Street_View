@@ -1,11 +1,11 @@
-<div class="container">
+<div class="container form-container">
   <%= simple_form_for @project do |f| %>
     <%= f.input :description, as: :text %>
     <%= f.input :title, label: "Titre" %>
     <%= f.input :longitude, as: :float %>
     <%= f.input :latitude, as: :float %>
     <%= f.input :photo, as: :file, id: 'form-photo' %>
-    <%= f.label :progress %> 
+    <%= f.label :progress %>
     <%= f.select(:progress, [['en project', 1], ['Travaux en cours',2]], {include_blank: "Etat du project"}, { class: 'form-control' }) %>
     <%= f.button :submit, "Valider", class: "btn-blue" %>
  <% end %>
