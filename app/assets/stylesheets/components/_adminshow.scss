@@ -1,133 +1,76 @@
-.details h1 {
-  font-size: 28px;
-  margin-bottom: 5px;
-  font-weight: 700;
-}
-
-.wrapper {
-  margin: 0 auto;
-  width: 860px;
-}
-
-.columns {
-  margin: 0 auto;
-  max-width: 900px;
-}
-
-.details {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  float: left;
-}
-
-.thumbnail-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  float: left;
-  image {
-    width: inherit;
-  }
-}
-
-.wishlist-container {
-  padding-left: 0;
-}
-
-.columns {
-  margin-top: 30px;
-}
-
-.button {
-  width: 100%;
-  border-radius: 0px;
-  border: 1px;
-  color: white;
-}
-
-span {
-  color: white;
-}
-
-.boutons {
+.card-product {
+  overflow: hidden;
+  height: 220px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.4);
   display: flex;
+  align-items: center;
+  border-radius: 5px;
 }
 
-.select,
-select {
-  width: 100%;
-  border-radius: 0 !important;
+.card-product img {
+  height: 100%;
+  width: 220px;
+  object-fit: cover;
 }
 
-#wishlist-container {
-  padding-left: 0;
-}
-
-#buy-container {
-  padding-right: 0;
-}
-
-.small-text {
-  font-size: 14px;
-}
-
-.small-text span {
+.card-product h2 {
+  font-size: 16px;
   font-weight: bold;
+  margin: 0;
 }
 
-.questions {
-  margin-top: 10px;
-  // border: solid 1px;
-  padding: 5px;
-  background-color: white;
+.card-product p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
 }
 
-.delete-button {
-  background: #ff6900;
-  color: white;
-  border: none;
+.card-product .card-product-infos {
+  padding: 16px;
 }
 
-.modif-button {
-  background: #86BA90;
-  color: white;
-  border: none;
+.card {
+  border-radius: 5px;
 }
 
-.modif-button:hover,
-.modif-button:active,
-.modif-button:focus {
-  color: white;
-  opacity: 0.9;
+.all-cards {
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
-.question-button {
-  background: #3A7CA5;
-  color: white;
-  border: none;
-  a {
-    text-decoration: none;
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .all-cards {
+    grid-template-columns: 1fr;
   }
 }
 
-.question-button:hover,
-.question-button:active,
-.question-button:focus {
-  color: white;
-  opacity: 0.9;
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .all-cards {
+    grid-template-columns: 1fr;
+  }
 }
 
-.delete-button:hover,
-.delete-button:active,
-.delete-button:focus {
-  color: white;
-  opacity: 0.9;
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .all-cards {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
-@media only screen and (max-width: 769px) {
-  #wishlist-container,
-  #buy-container {
-    padding: 0 0 15px 0;
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .all-cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .all-cards {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
