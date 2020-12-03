@@ -3,13 +3,12 @@ import mapboxgl from 'mapbox-gl';
 import * as d3 from "d3";
 
 const token = 'pk.eyJ1IjoianVsaWFubGYiLCJhIjoiY2tndzl6aXhqMDAxazMwb3NoeTNtNjN2biJ9.rKcfejZ9GeY9RhR-li-d4w';
-const options = { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 };
+// const options = { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 };
 const origin = window.document.location.origin
 const markers = [];
-const user = document.querySelector('#user')
+// const user = document.querySelector('#user')
 const homepage = document.querySelector('#map')
 const color = ['#279AF1', '#E87310', '#03CEA4'];
-const mode = document.querySelector('#map-mode');
 // [bleu, orange, vert]
 
 let map;
@@ -102,59 +101,59 @@ const generateFakeMove = () => {
   });
 };
 
-const transformPos = (pos) => {
-  return new Promise(resolve => {
-    const crd = pos.coords;
-    resolve([crd.longitude, crd.latitude]);
-  });
-};
+// const transformPos = (pos) => {
+//   return new Promise(resolve => {
+//     const crd = pos.coords;
+//     resolve([crd.longitude, crd.latitude]);
+//   });
+// };
 
-const saveCheckpoint = (position) => {
-  fetch(`${origin}/api/v1/checkpoints`, {
-    method: 'POST',
-    headers: { 'content-type': 'application/json' },
-    body: `{ "checkpoint": { "longitude": ${position[0]}, "latitude": ${position[1]} } }`
-  })
-};
+// const saveCheckpoint = (position) => {
+//   fetch(`${origin}/api/v1/checkpoints`, {
+//     method: 'POST',
+//     headers: { 'content-type': 'application/json' },
+//     body: `{ "checkpoint": { "longitude": ${position[0]}, "latitude": ${position[1]} } }`
+//   })
+// };
 
 
-const trackUser = (pos) => {
-  transformPos(pos).then((position) => {
-    if (position !== []) {
-      const data = { type: "FeatureCollection", features: [{ type: "Feature", geometry: { type: "LineString", coordinates: [position] } }] }
-      map.getSource('trace').setData(data);
-      map.panTo(position);
-      saveCheckpoint(position);
-    }
-  });
-};
+// const trackUser = (pos) => {
+//   transformPos(pos).then((position) => {
+//     if (position !== []) {
+//       const data = { type: "FeatureCollection", features: [{ type: "Feature", geometry: { type: "LineString", coordinates: [position] } }] }
+//       map.getSource('trace').setData(data);
+//       map.panTo(position);
+//       saveCheckpoint(position);
+//     }
+//   });
+// };
 
-const generateMove = (center, nbr) => {
-  const data = { type: "FeatureCollection", features: [{ type: "Feature", geometry: { type: "LineString", coordinates: [center] } }] }
-  map.addSource('trace', { type: 'geojson', data: data });
-  map.addLayer({
-    'id': 'trace',
-    'type': 'line',
-    'source': 'trace',
-    'paint': {
-      'line-color': '#669df6',
-      'line-opacity': 0.75,
-      'line-width': 5
-    }
-  });
-  map.jumpTo({ 'center': center, 'zoom': 13 });
-  map.setPitch(30);
-  let i = 0;
-  const timer = window.setInterval(function() {
-    if (i < nbr) {
-      navigator.geolocation.getCurrentPosition(trackUser, error, options);
-      i += 1;
-    } else {
-      console.log('Stop tracking');
-      window.clearInterval(timer);
-    }
-  }, 60000);
-};
+// const generateMove = (center, nbr) => {
+//   const data = { type: "FeatureCollection", features: [{ type: "Feature", geometry: { type: "LineString", coordinates: [center] } }] }
+//   map.addSource('trace', { type: 'geojson', data: data });
+//   map.addLayer({
+//     'id': 'trace',
+//     'type': 'line',
+//     'source': 'trace',
+//     'paint': {
+//       'line-color': '#669df6',
+//       'line-opacity': 0.75,
+//       'line-width': 5
+//     }
+//   });
+//   map.jumpTo({ 'center': center, 'zoom': 13 });
+//   map.setPitch(30);
+//   let i = 0;
+//   const timer = window.setInterval(function() {
+//     if (i < nbr) {
+//       navigator.geolocation.getCurrentPosition(trackUser, error, options);
+//       i += 1;
+//     } else {
+//       console.log('Stop tracking');
+//       window.clearInterval(timer);
+//     }
+//   }, 60000);
+// };
 
 const drawProject = () => {
   const projects = document.querySelectorAll('#all-projects > .card');
@@ -169,40 +168,29 @@ const drawProject = () => {
 };
 
 const initMode = (center) => {
-  const nbr = document.querySelector('#track-nbr');
-  const label = document.querySelector('#map-mode-label');
+  // const nbr = document.querySelector('#track-nbr');
+  // const mode = document.querySelector('#map-mode');
+  // const label = document.querySelector('#map-mode-label');
   const lancer = document.querySelector('#lancer');
-  mode.onclick = function(event) {
-    if (event.currentTarget.checked) {
-      nbr.classList.remove('d-none');
-      label.innerText = "Traçage";
-    } else {
-      nbr.classList.add('d-none');
-      label.innerText = "Simulation";
-    }
-  }
+  // mode.onclick = function(event) {
+  // if (event.currentTarget.checked) {
+  //   nbr.classList.remove('d-none');
+  //   label.innerText = "Traçage";
+  // } else {
+  // nbr.classList.add('d-none');
+  // label.innerText = "Simulation";
+  // }
+  // }
   lancer.onclick = function(event) {
-    if (mode.checked) {
-      console.log('Tracing');
-      generateMove(center, parseInt(nbr.value)); // Tracking
-    } else {
-      console.log('Simulation');
-      generateFakeMove(); // Simulate
-    }
+    // if (mode.checked) {
+    //   console.log('Tracing');
+    //   generateMove(center, parseInt(nbr.value)); // Tracking
+    // } else {
+    console.log('Simulation');
+    generateFakeMove(); // Simulate
+    // }
   }
 };
-
-const addUserToMap = (center) => {
-  const el = document.createElement('div');
-  el.className = 'marker';
-  el.style.backgroundImage = 'url(https://image.flaticon.com/icons/png/512/23/23398.png)';
-  el.style.backgroundSize = 'cover';
-  el.style.width = '25px';
-  el.style.height = '25px';
-  new mapboxgl.Marker(el)
-    .setLngLat(center)
-    .addTo(map);
-}
 
 const initMap = (center) => {
   if (homepage) {
@@ -214,35 +202,34 @@ const initMap = (center) => {
       zoom: 12
     });
     drawProject();
-    addUserToMap(center);
     map.on('load', function() {
-      if (mode.parentNode.parentNode.classList.contains('d-none')) {
-        console.log('Simulation');
-        generateFakeMove(); // Simulate
-      } else {
-        initMode(center);
-      }
+      // if (mode.parentNode.parentNode.classList.contains('d-none')) {
+      //   console.log('Simulation');
+      //   generateFakeMove(); // Simulate
+      // } else {
+      initMode(center);
+      // }
     });
   }
 };
 
-const init = (pos) => {
-  transformPos(pos).then((position) => {
-    if (position !== []) {
-      initMap(position)
-    }
-  });
-}
+// const init = (pos) => {
+//   transformPos(pos).then((position) => {
+//     if (position !== []) {
+//       initMap(position)
+//     }
+//   });
+// }
 
-const error = (err) => {
-  console.warn(`ERROR(${err.code}): ${err.message}`);
-}
+// const error = (err) => {
+//   console.warn(`ERROR(${err.code}): ${err.message}`);
+// }
 
-const initMapWithUser = () => {
-  if (user && user.dataset.user) {
-    navigator.geolocation.getCurrentPosition(init, error, options);
-  }
-};
+// const initMapWithUser = () => {
+//   if (user && user.dataset.user) {
+//     navigator.geolocation.getCurrentPosition(init, error, options);
+//   }
+// };
 
-export { initMapWithUser };
-// export { initMap };
+// export { initMapWithUser };
+export { initMap };
