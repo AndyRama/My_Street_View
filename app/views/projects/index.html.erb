@@ -4,7 +4,7 @@
     <h3>Liste des projets</h3>
   </div>
   <div class="index-container">
-    <div class="all-projects" style="text-align: -webkit-center;">
+    <div class="all-projects" style="text-align: center;">
       <%= link_to new_project_path, class: "text-decoration-none" do %>
         <div class="card" style="border-radius: 25px;">
           <div class="svg">
@@ -19,9 +19,8 @@
         <div class="card" style="width: 18rem; margin-bottom: 15px; margin-top: 10px; border-radius: 30px;">
           <%= link_to project_path(project.id) do %>
             <%= cl_image_tag project.photo.key, style: "object-fit: cover; border-radius: 30px 30px 0 0;", width: 286, height: 180 %>
-
             <div class="card-img-overlay" style="border-radius: 30px; justify-content: center;">
-                <h3 class="card-title"><%= project.title %></h3>
+              <h3 class="card-title"><%= project.title %></h3>
             </div>
           <% end %>
           <div class="card-footer" style="display: flex;justify-content: space-evenly; border-radius: 0 0 30px 30px; z-index: 3000; background: white;">
