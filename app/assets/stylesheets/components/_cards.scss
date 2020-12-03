@@ -1,0 +1,40 @@
+
+
+.card-footer:last-child {
+  border-radius: 0 0 50px 50px;
+}
+.card-footer {
+  border-radius: 0 0 50px 50px;
+  p {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+.card-img-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  // padding: 1.25rem;
+  background: linear-gradient(#07000014, #00000040);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  opacity: 1;
+  transition: ease;
+}
+
+.card-img-overlay:hover {
+opacity: 1;
+}
+
+.card-title {
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  opacity: 1;
+  font-weight: bold;
+  text-decoration: none
+}
