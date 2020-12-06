@@ -29,8 +29,8 @@
           <%= image_tag "https://res.cloudinary.com/dbtnehfrf/image/upload/v1606737304/my%20city%20views/photo_profil_fnhuzk.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
         <% end %>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <%= link_to "Action", "#", class: "dropdown-item" %>
-          <div class="dropdown-divider"></div>
+          <%#= link_to "Action", "#", class: "dropdown-item" %>
+          <%# <div class="dropdown-divider"></div> %>
           <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
         </div>
       </li>
