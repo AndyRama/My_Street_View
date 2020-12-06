@@ -36,6 +36,7 @@ gem 'simple_form'
 gem 'mapbox-gl-rails'
 gem 'simple_token_authentication'
 gem 'geocoder'
+gem 'rails_admin', '~> 2.0'
 
 group :development, :test do
   gem 'pry-byebug'
