@@ -9,11 +9,17 @@
   transition: opacity 0.3s ease;
   margin-bottom: 10px;
   margin-top: 20px;
+  a {
+    color: white;
+  }
 }
 
 .btn-blue:hover {
-  color: $blue;
+  color: $green;
   background-color: white;
+  a {
+    color: $green;
+  }
 }
 
 .btn-grey {
