@@ -20,5 +20,3 @@ New application to facilitate communication between the town hall and fellow cit
 -Git/GitHub  
 -Heroku 
 -API MAPBOX
--Rubocop
- 
