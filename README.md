@@ -15,6 +15,6 @@ New application to facilitate communication between the town hall and fellow cit
 -HTML/CSS  
 -PostgreSQL  
 -Git/GitHub  
--Heroku 
+-Heroku
 -API Mapbox
 -Rubocop
