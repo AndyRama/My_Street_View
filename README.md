@@ -19,4 +19,5 @@ New application to facilitate communication between the town hall and fellow cit
 -PostgreSQL  
 -Git/GitHub  
 -Heroku 
--API MAPBOX
+-API Mapbox  
+-Rubocop
