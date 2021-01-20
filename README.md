@@ -1,5 +1,5 @@
 # My street view
- (https://github.com/AndyRama/My_Street_View/blob/master/My%20%20street%20view.PNG)  
+  ![Screenshot from 2020-07-07 19-47-44](https://github.com/AndyRama/My_Street_View/blob/master/My%20%20street%20view.PNG)  
  
 # URL  
 https://my-street-view.herokuapp.com/
