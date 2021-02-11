@@ -1,5 +1,5 @@
 # My street view 
-forked from Alex-Ljeune/My_City_View, Upgrade and deployment in heroku.
+My_City_View(Upgrade) with Dashboard and deployment in my heroku.
   ![Screenshot from 2020-07-07 19-47-44](https://github.com/AndyRama/My_Street_View/blob/master/My%20%20street%20view.PNG)  
 # URL  
 https://my-street-view.herokuapp.com/
